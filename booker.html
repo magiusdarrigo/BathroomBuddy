@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+<head>
+ 
+        <title>AAdvantage-Restuarants</title>
+                    
+
+
+ <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="bookstyle.css">
+        <style>
+ 
+body{    
+    font-family: 'Roboto Condensed', sans-serif;
+    overflow-x: hidden;
+    
+}
+
+        h1 { margin:150px auto 30px auto; text-align:center; color:#fff;}
+   
+            .hi-slide { position: relative; width: 754px; height: 222px; margin: 90px auto 0; }
+            
+.hi-slide .hi-next,
+.hi-slide .hi-prev 
+            { position: absolute;
+              top: 80%; 
+              width: 40px;
+              height: 40px; 
+              margin-top: -20px;     
+                border-radius: 50px; 
+                 
+                
+              line-height: 40px;
+              text-align: center; 
+              cursor: pointer;
+              background-color: #fff; 
+              color: black;               
+              transition: all 0.4s;
+              font-size: 20px; 
+                font-weight: bold;
+            }
+           .hi-slide .hi-next:hover, 
+            .hi-slide .hi-prev:hover 
+            {
+            opacity: 1; 
+            background-color: #fff;  
+            }
+            
+           .hi-slide .hi-prev { left: -60px; }
+            
+    .hi-slide .hi-prev::before { content: '<'; }
+    .hi-slide .hi-next { right: -60px; }
+    .hi-slide .hi-next::before { content: '>'; }
+    
+            .hi-slide > ul
+                    { 
+                        list-style: none; 
+                        position: relative;
+                        width: 754px; 
+                        height: 292px; 
+                        margin: 0;
+                        padding: 0;
+            }
+            
+            
+        .hi-slide > ul > li {
+            overflow: hidden; 
+            position: absolute; 
+            z-index: 0; 
+            left: 377px;
+            top: 146px; 
+            width: 0; 
+            height: 0; 
+            margin: 0; 
+            padding: 0;
+            border: 3px solid #ccd4de;             
+            background-color: #ffffff; 
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            cursor: pointer; }
+            
+        .hi-slide > ul > li > img { 
+            width: 50%; 
+            height: 50%; 
+            left: 50%;
+            text-align:center;
+            transform: translateX(-50%);
+            top: 5%;
+            position: absolute;
+            /*background-position: center;*/
+        }
+        .name {
+            width: 60%; 
+            height: 60%; 
+            left: 50%;
+            text-align:center;
+            transform: translateX(-50%);
+            top: 60%;
+            font-family: Switzera ADF;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 2em;
+            color:#004A9D;
+            position: absolute;
+        }
+
+        .language {
+            width: 60%; 
+            height: 60%;  
+            left: 50%;
+            text-align:center;
+            transform: translateX(-50%);
+            top: 70%;
+            font-family: Switzera ADF;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 100%;
+            color:000000;
+            position: absolute;
+        }
+
+        .book {
+            width: 30%; 
+            height: 10%; 
+            left: 50%;
+            text-align:center;
+            transform: translateX(-50%);
+            top: 80%;
+            font-family: Switzera ADF;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 100%;
+            background-color: #D61F27;
+            color:#FFFFFF;
+            position: absolute;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 30px;
+        }
+
+ 
+
+        </style>
+    </head>
+    <body>
+        <img src="background.jpg" id=background>
+        
+        <img src="AA_Logo.png" id="logo">
+       <!--  <img src="Cart.png" id="cart"> -->
+        
+ <br><br>
+        <div class="slide hi-slide">
+          <div class="hi-prev "></div>
+            <div class="hi-next "></div>
+            <ul>
+    <li>
+        <img src="gmuleba.jpg" alt="" />
+        <label class="name">
+            Allison
+        </label>
+        <label class="language">
+            English, Spanish
+        </label>
+        <button id="allison123" class="book">
+            Book
+        </button>
+
+    </li>
+    <li>
+        <img src="bgarcia.jpg" alt="" />
+        <label class="name">
+            Bill
+        </label>
+        <label class="language">
+            English, German
+        </label>
+        <button id="bill123" class="book">
+            Book
+        </button>
+    </li>
+    <li>
+        <img src="bdarshan.jpg" alt="" />
+        <label class="name">
+            Gary
+        </label>
+        <label class="language">
+            English, Mandarin, Russian
+        </label>
+        <button id="gary123" class="book">
+            Book
+        </button>
+    </li>
+    <li>
+        <img src="balbert.jpg" alt="" />
+        <label class="name">
+            Norman
+        </label>
+        <label class="language">
+            Mandarin
+        </label>
+        <button  id="norman123"class="book">
+            Book
+        </button>
+    </li>
+    <li>
+        <img src="bjoseph.jpg" alt="" />
+        <label class="name">
+            Phillip
+        </label>
+        <label class="language">
+            English, Mandarin, Cantonese
+        </label>
+        <button id="philip123" class="book">
+            Book
+        </button>
+    </li>
+    <li>
+        <img src="bben.jpg" alt="" />
+        <label class="name">
+            Mike
+        </label>
+        <label class="language">
+            English, French
+        </label>
+        <button id="mike123" class="book">
+            Book
+        </button>
+    </li>
+    <li>
+        <img src="granjan.jpg" alt="" />
+        <label class="name">
+            Alice
+        </label>
+        <label class="language">
+            English, Vietnamese
+        </label>
+        <button id="alice123" class="book">
+            Book
+        </button>
+    </li>
+            </ul>
+        </div>
+        <!-- <div id="botrect"> -->
+        <!-- <label id="level">Gold Level</label>
+        <label id="miles">Miles: 27564</label> -->
+        <!-- <label id="credit">Credit: $67.00</label> -->
+        
+        
+        
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="js/jquery.hislide.js" ></script>
+        <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+        <script>
+            $('.slide').hiSlide();
+
+            $(document).ready(function () {
+
+                var config = {
+                "apiKey" : "AIzaSyCm6oWzvhDOi3szra2UQja7wm19K1lsb",
+                "authDomain": "americanairlines-f737a.firebaseapp.com",
+                "databaseURL": "https://americanairlines-f737a.firebaseio.com/",
+                "storageBucket": "americanairlines-f737a.appspot.com"
+                };
+                firebase.initializeApp(config);
+
+                var database = firebase.database();
+
+                var customer = localStorage.getItem("customer");
+                console.log(localStorage.getItem("customer"));
+
+                var ref = database.ref("users/" + customer);
+                ref.once("value", gotData, errData);
+
+
+                var nextFlight = -1;
+                var customerName = "";
+                var departureTime = "";
+                var imgUrl = "";
+
+                function gotData(data) {
+                    console.log(data.val());
+                    var dataVal = data.val();
+                    var currentFlight = dataVal["currentFlight"];
+                    nextFlight = dataVal["nextFlight"];
+                    customerName = dataVal["first"];
+                    imgUrl = dataVal["url"];
+                    console.log("nextFlight");
+                    var refF = database.ref("flights/" + nextFlight);
+                    refF.once("value", gotFData, errData);
+                }
+
+                function gotFData(data) {
+                    var dataVal = data.val();
+                    departureTime = dataVal["departureTime"];
+                    console.log(departureTime);
+                }
+
+                function errData(data) {
+                    console.log("Error!");
+                }
+
+                $(".book").click(function () {
+                    
+                    
+                    var translatorID = $(this).attr('id');
+                    var refOrders = database.ref("orders/"+ translatorID);
+
+                    refOrders.set({
+                        first: customerName,
+                        departure: departureTime,
+                        url: imgUrl,
+                        next : nextFlight
+                    });
+
+                    alert("Thank you for booking! Please meet your translator when you deplane.")
+                    
+
+                });
+
+
+
+
+            });
+
+
+
+
+
+
+        </script>
+    </body>
+    
+</html>

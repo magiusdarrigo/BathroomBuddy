@@ -1,0 +1,303 @@
+body
+{
+	margin: 0;
+	height: 100%;
+/*	width: 1440px;
+	height: 900px;*/
+	background: #FFFFFF;
+}
+
+
+
+
+
+.dropbtn {
+  background-color: #D61F27;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  width: 160px;
+  left:-15px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: absolute;
+  left: 5%;
+  top: 90%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  overflow-y: scroll;
+  background-color: #f9f9f9;
+  top: -200px;
+  height: 200px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #c2000a
+}
+
+
+
+
+
+
+#orderto {
+	position: absolute;
+	width: 350px;
+	height: 58px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	top: 70%;
+	 
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 56px;
+	color: #FFFFFF;
+	background: #D61F27;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 30px;
+}
+
+#imto {
+	position: absolute;
+	width: 350px;
+	height: 58px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	top: 80%;
+	 
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	line-height: 56px;
+	color: #FFFFFF;
+	background: #D61F27;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 30px;
+}
+
+#ffn {
+	position: absolute;
+	width: 350px;
+	height: 40px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	top: 59%;
+	border: 3px solid #004A9D;
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 56px;
+	color: #576b82;
+	text-align: center;
+	/*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+}
+
+#logo {
+	position: absolute;
+	width: 367px;
+	height: 113px;
+	left: 537px;
+	top: 70px;
+}
+
+#welcome {
+	position: absolute;
+	width: 1400px;
+	height: 127px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+
+	top: 25%;
+	/*text-align:center;*/
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 70px;
+	line-height: 112px;
+	 
+	 
+	color: #004A9D;
+}
+
+#checkout {
+	position: absolute;
+	width: 600px;
+	height: 127px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+
+	top: 25%;
+	/*text-align:center;*/
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 70px;
+	line-height: 112px;
+	 
+	 
+	color: #004A9D;
+}
+
+
+
+#orderat {
+	position: absolute;
+	width: 900px;
+	height: 127px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+
+
+	top: 38%;
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 112px;
+	 
+	 
+	color: #576b82;
+}
+
+
+
+#upperline {
+	position: absolute;
+	width: 736px;
+	height: 0px;
+	left: 330px;
+	top: 290px;
+
+	 
+	border: 2px solid #B0A2A2;
+	transform: rotate(-0.15deg);
+
+}
+
+#botline {
+	position: absolute;
+	width: 479px;
+	height: 0px;
+	left: 465px;
+	top: 310px;
+
+	 
+	border: 2px solid #B0A2A2;
+	transform: rotate(0deg);
+
+}
+
+#botrect {
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	left: 0px;
+	top: 90.5%;
+	 
+	background: #0563fa;
+}
+
+
+#level {
+	position: absolute;
+	width: 220px;
+	height: 51px;
+	left: 620px;
+	top: 15%;
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	color: #FFFFFF;
+}
+
+#miles {
+	position: absolute;
+	width: 231px;
+	height: 51px;
+	left: 23px;
+	top: 15%;
+	 
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	 
+	color: #FFFFFF;
+}
+
+#credit {
+	position: absolute;
+	width: 200px;
+	height: 51px;
+	left: 85%;
+	top: 15%;
+	 
+	 
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	 
+	color: #FFFFFF;
+}
+
+#background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+
+
+	opacity: 0.11;
+}

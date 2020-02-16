@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "american-airlines-268407",
+  "private_key_id": "69ca66e234a01d5e10d0811740cbc3366fbffb67",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCO2awoP1qchj/z\nfnttgndPScN4DUzB4+oONfW+1NV4BP9E4bgh170/LNNqoNWx2vTO/RXmZnNBsOQp\nl+ZhyTL4RAA57VBGFgaN/8xX8p0/09RwE95flmRi+IBVeDVOPPqlKV9Q14jCrV9M\nckOhxBFU5yIy//HfaiOJUnMj9csQfo1l/kPdZAPx+rROZvATPSV9TPmgTe/yqNMW\nd64H8HCo3hWapoTX1AR3SgLCwVMVeo+Np4PjZs+5N+vFF6x0Rrjl6ktTfvIsg8mR\nAMjfqqY1QqM2TJRXK6anGip6Wrg9xHMTi6k+SIqD/kiVexM3qkdnTM1VU7WC2nor\nXQHmN05PAgMBAAECggEAQWwaZtJhDseDOWKHZ6d1OehX777zlObrNjfrRMsXuuBb\nAnJ30HQMNYcziiV/yPU04ilRotPv3DmFvTDWr5kkUURfcCgp9/c1aEorDWpNL0K2\nC+BlmxR3BEa4C6zCiQLvbb3Na+pSNYqOVyYLqGXx5Bb4+C902DO1c7pBhkoXBoWn\nzF0J1WXbx0mn53PeNnGqJmaHT5lByiEzAoXzzT9RnPSAx/+VQYzVt3xXLm8Od6Vt\nWT3Ssr0d77CVPTIGM5c7b8DTVJcMItrlNjRZs35MjLJsw/8va3IQHkk9nQpeEFUe\nx4LPvrl66O3ZHhL6bASFlcZOodJNY5aJUOwMCJY0HQKBgQDDMyvWKHDL1rJOUx/Y\n+DsxpNX65CXzcsMk+Jyn2n0iA9AfWGB3r91m89ehu1V+l02ugJ7dkHc1N3PpQtAv\nv7BlgTdzz2ahrlLc35B46otUI95LmxCFr7CgUSfJJC7OIAovMhtBkFx03xhEdRzn\ni9q1Xn7yZMnFvhspdEy94/DdPQKBgQC7WED6bTNiBsIAgAUOQg9GO6DP3aq5GB48\ndFeSzAQVTgaXN8Z8gPpI6wMipwwxXrdZ0846uSJwvsmpN+6gXXUmsjbPMkvvf+R1\nqskQV/4yb/j8QCxDCQZol/FZWun4VA6eO9OdVhqA7fl9/ymujmGaOnqqlzaDzW5C\nPcrIZwUqewKBgGfEUR5kmynRNTJr//cgZp9KaDIajI4xSMnjm6uje3fUnRO8sHOP\nutva7ptcceN83V/RoiJYhPZ2RxkOWou3lDcxjN/0tjNm70fZVPziejS9aJO6l/rp\nXbSrz8GeiX8sCx3xvgmJi4zZeBYUR8xTTW2zETscFyMWn2vXFmCvxsBlAoGBAKJr\npxn15qBL35Hza26rEvb+5zKPqV2DbWNYMjxQqBGYbdpYPrreTx88sKEwVj/PMAKu\nwJLkwtkgb1FH7pgVrmV4CFCl+HORW44wHNUQlI9ByIlZUYZkoqu3X0TqrwHeTjYd\nBB/Z8Gxq5Oy5dXeidTfzDzoqkta+GaNQUyhfOHlVAoGAHHbV9G4CGg89HaEHXqyd\nXlJ/kQe88GDDDBFNb/Zqlx/j0I/smgwGhQBUbnJSfqD1cMFcfJiOtcEMREACSzg5\njfXdCdxZdX3wcFqbebREE3NyK43Bo93lkiSYQc4mjPg+doapdjZZm5Jctdkv+nSS\n7MMEVrNl1JeDUK7nf3nsyn8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "starting-account-iaye3z65484h@american-airlines-268407.iam.gserviceaccount.com",
+  "client_id": "114704127507280497517",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/starting-account-iaye3z65484h%40american-airlines-268407.iam.gserviceaccount.com"
+}

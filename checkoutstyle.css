@@ -1,0 +1,97 @@
+body
+{
+	margin: 0;
+	height: 100%;
+/*	width: 1440px;
+	height: 900px;*/
+	background: #FFFFFF;
+}
+
+#pay {
+	position: absolute;
+	width: 600px;
+	height: 84px;
+	left: 30%;
+	top: 108px;
+
+	 
+	font-family: "Gill Sans MT";
+	font-style: normal;
+	font-weight: 500;
+	font-size: 72px;
+	line-height: 84px;
+
+	 
+	color: #000000;
+
+}
+
+#logo {
+	position: absolute;
+	width: 324px;
+	height: 100px;
+	left: 0px;
+	top: 0px;
+}
+
+#botrect {
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	left: 0px;
+	top: 90.5%;
+	 
+	background: #0563fa;
+}
+
+#level {
+	position: absolute;
+	width: 220px;
+	height: 51px;
+	left: 620px;
+	top: 15%;
+	 
+	font-family: "Gill Sans MT";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	color: #FFFFFF;
+}
+
+#miles {
+	position: absolute;
+	width: 231px;
+	height: 51px;
+	left: 23px;
+	top: 15%;
+	 
+	 
+	font-family: "Gill Sans MT";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	 
+	color: #FFFFFF;
+}
+
+#credit {
+	position: absolute;
+	width: 180px;
+	height: 51px;
+	left: 85%;
+	top: 15%;
+	 
+	 
+	font-family: "Gill Sans MT";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 42px;
+	 
+	 
+	color: #FFFFFF;
+}

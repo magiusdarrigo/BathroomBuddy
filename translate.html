@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AAdvantage-Food</title>
+    <link rel="stylesheet" type="text/css" href="translatestyle.css">
+    <!--<script src="script.js"></script>-->
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+        $(document).ready(function () {
+            var config = {
+                "apiKey" : "AIzaSyCm6oWzvhDOi3szra2UQja7wm19K1lsb",
+                "authDomain": "americanairlines-f737a.firebaseapp.com",
+                "databaseURL": "https://americanairlines-f737a.firebaseio.com/",
+                "storageBucket": "americanairlines-f737a.appspot.com"
+            };
+            firebase.initializeApp(config);
+
+            var database = firebase.database();
+
+            var translator = localStorage.getItem("translator");
+
+            var refT = database.ref("translators/" + translator);
+            refT.once("value", gotTData, errData);
+
+            console.log(localStorage.getItem("translator"));
+
+
+            var ref = database.ref("orders/" + translator);
+            ref.once("value", gotData, errData);
+
+            var nextFlight = -1;
+            var customerName = "";
+            var departureTime = "";
+            var imgUrl = "";
+            var transName = "";
+
+
+            function gotTData(data) {
+                var dataVal = data.val();
+                transName = dataVal["first"];
+                $("#travelerLabel").html(transName +", Here is Your Travel Buddy.");
+            }
+
+
+            function gotData(data) {
+                    console.log(data.val());
+                    var dataVal = data.val();
+                    departureTime = dataVal["departure"];
+                    nextFlight = dataVal["next"];
+                    customerName = dataVal["first"];
+                    $("#name").html(customerName);
+                    $("#next").html(nextFlight);
+                    $("#dep").html(departureTime.slice(11,19));
+                    imgUrl = dataVal["url"];
+                    $("#propic").attr("src",imgUrl);
+                    console.log(imgUrl);
+
+            }
+
+            function errData(data) {
+                console.log("Error!");
+            }
+
+        });
+    </script>
+</head>
+        <body>
+            <img src="background.jpg" id=background>
+            <img src="AA_Logo.png" id="logo">
+            
+            <div id="orders">
+                <img id="propic">
+                <label id="travelerLabel"></label>
+                <label id="nameLabel">Pick Up: </label>
+                <label id="name"></label>
+
+                <label id="nextLabel">Next Flight: </label>
+                <label id="next"></label>
+
+                <label id="depLabel">Departure Time: </label>
+                <label id="dep"></label>
+
+
+            </div>
+            <!-- <div id="botrect"> -->
+            <!-- <label id="credit">Credit: $67.00</label> -->
+            
+            
+        </body>
+</html>
