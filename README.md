@@ -1,5 +1,5 @@
 # Bilingual-Buddy
-A web app that allows travelers to pair up with bilingual travelers can help translate and navigate foreign airports.
+A web app that allows travelers to pair up with bilingual travelers can help translate and navigate foreign airports. My team and I built this web app at HackUNT and won 2nd place in the American Airlines Challenge.
 
 ## Inspiration
 With foreign grandparents flying to America to visit relatives, we realized that they often struggle with layovers due to language barriers. In order to improve theirs and many others' travel experiences, we built Bilingual Buddy.
