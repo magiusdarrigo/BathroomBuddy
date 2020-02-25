@@ -1,0 +1,77 @@
+$(document).ready(function () {
+
+    var config = {
+        "apiKey" : "AIzaSyCm6oWzvhDOi3szra2UQja7wm19K1lsb",
+        "authDomain": "americanairlines-f737a.firebaseapp.com",
+        "databaseURL": "https://americanairlines-f737a.firebaseio.com/",
+        "storageBucket": "americanairlines-f737a.appspot.com"
+    };
+    firebase.initializeApp(config);
+
+    var database = firebase.database();
+
+
+
+    $(".menuOp").click(function () {
+
+        console.log($(this).attr('id'));
+        var language = $(this).attr('id');
+        $.ajax({
+            url: "translation_function",
+            data: { data:language},
+            dataType: 'json',
+            type: 'POST',
+            processData: false,
+            success: function (data) {
+                alert(data);
+            },
+            error: function () {
+                alert("post failed")
+            },
+        });
+
+
+    });
+    
+
+
+
+
+
+    $("#orderto").click(function () {
+        var ref = database.ref("users/" + $("#ffn").val());
+        ref.once("value", gotData, errData);
+    });
+
+    $("#imto").click(function () {
+        var ref = database.ref("translators/" + $("#ffn").val());
+        ref.once("value", gotTData, errData);
+
+    });
+
+    function gotData(data) {
+        console.log(data.val());
+        if(!(data.val() == null))
+        {
+            localStorage.setItem("customer", $("#ffn").val());
+            $(location).attr("href", "booker.html");
+            
+        }
+    }
+
+
+    function gotTData(data) {
+        console.log(data.val());
+        if(!(data.val() == null))
+        {
+            localStorage.setItem("translator", $("#ffn").val());
+            $(location).attr("href", "translate.html");
+            
+        }
+    }
+
+    function errData(data) {
+        console.log("Error!");
+    }
+
+});

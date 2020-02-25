@@ -2,9 +2,150 @@ body
 {
 	margin: 0;
 	height: 100%;
-/*	width: 1440px;
-	height: 900px;*/
 	background: #FFFFFF;
+	font-family: 'Roboto Condensed', sans-serif;
+  overflow-x: hidden;
+}
+
+h1 
+{ 
+	margin:150px auto 30px auto;
+	text-align:center; 
+	color:#fff;
+}
+   
+.hi-slide 
+{ 
+	position: relative;
+	width: 754px;
+	height: 222px;
+	margin: 90px auto 0; 
+}
+            
+.hi-slide .hi-next,
+.hi-slide .hi-prev 
+{ 
+	position: absolute;
+  top: 80%; 
+  width: 40px;
+  height: 40px; 
+  margin-top: -20px;     
+  border-radius: 50px; 
+     
+    
+  line-height: 40px;
+  text-align: center; 
+  cursor: pointer;
+  background-color: #fff; 
+  color: black;               
+  transition: all 0.4s;
+  font-size: 20px; 
+  font-weight: bold;
+}
+
+.hi-slide .hi-next:hover, 
+.hi-slide .hi-prev:hover 
+{
+	opacity: 1; 
+	background-color: #fff;  
+}
+            
+.hi-slide .hi-prev { left: -60px; }
+
+.hi-slide .hi-prev::before { content: '<'; }
+
+.hi-slide .hi-next { right: -60px; }
+
+.hi-slide .hi-next::before { content: '>'; }
+    
+.hi-slide > ul
+{ 
+    list-style: none; 
+    position: relative;
+    width: 754px; 
+    height: 292px; 
+    margin: 0;
+    padding: 0;
+}
+            
+            
+.hi-slide > ul > li 
+{
+  overflow: hidden; 
+  position: absolute; 
+  z-index: 0; 
+  left: 377px;
+  top: 146px; 
+  width: 0; 
+  height: 0; 
+  margin: 0; 
+  padding: 0;
+  border: 3px solid #ccd4de;             
+  background-color: #ffffff; 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer; 
+}
+  
+.hi-slide > ul > li > img 
+{ 
+  width: 50%; 
+  height: 50%; 
+  left: 50%;
+  text-align:center;
+  transform: translateX(-50%);
+  top: 5%;
+  position: absolute;
+}
+
+.name 
+{
+  width: 60%; 
+  height: 60%; 
+  left: 50%;
+  text-align:center;
+  transform: translateX(-50%);
+  top: 60%;
+  font-family: Switzera ADF;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2em;
+  color:#004A9D;
+  position: absolute;
+}
+
+.language 
+{
+  width: 60%; 
+  height: 60%;  
+  left: 50%;
+  text-align:center;
+  transform: translateX(-50%);
+  top: 70%;
+  font-family: Switzera ADF;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  color:000000;
+  position: absolute;
+}
+
+.book 
+{
+  width: 30%; 
+  height: 10%; 
+  left: 50%;
+  text-align:center;
+  transform: translateX(-50%);
+  top: 80%;
+  font-family: Switzera ADF;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  background-color: #D61F27;
+  color:#FFFFFF;
+  position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
 }
 
 #info {
@@ -231,7 +372,7 @@ body
 	width: 50px;
 	height: 50px;
 	left: 38%;
-	top: 130px;
+	top: 100px;
 
 	/*text-align: center;*/
 	font-family: Switzera ADF;

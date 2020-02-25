@@ -3,136 +3,24 @@
 <html>
 <head>
     <title>AAdvantage-Home</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <!--<script src="script.js"></script>-->
-    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script src="scripts/script.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.8.2/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.8.2/firebase-analytics.js"></script>
-
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            var config = {
-                "apiKey" : "AIzaSyCm6oWzvhDOi3szra2UQja7wm19K1lsb",
-                "authDomain": "americanairlines-f737a.firebaseapp.com",
-                "databaseURL": "https://americanairlines-f737a.firebaseio.com/",
-                "storageBucket": "americanairlines-f737a.appspot.com"
-            };
-            firebase.initializeApp(config);
-
-            var database = firebase.database();
-
-
-
-            $(".menuOp").click(function () {
-
-                console.log($(this).attr('id'));
-            	var language = $(this).attr('id');
-            	// console.log("hi");
-            	$.ajax({
-	                url: "translation_function",
-	                // contentType: 'application/json',
-	                data: { data:language},
-	                dataType: 'json',
-	                type: 'POST',
-	                processData: false,
-	                success: function (data) {
-	                    alert(data);
-	                },
-	                error: function () {
-	                    alert("post failed")
-	                },
-	            });
-
-
-            });
-            
-
-
-
-
-
-            $("#orderto").click(function () {
-
-                var ref = database.ref("users/" + $("#ffn").val());
-                ref.once("value", gotData, errData);
-
-
-            });
-
-            $("#imto").click(function () {
-                var ref = database.ref("translators/" + $("#ffn").val());
-                ref.once("value", gotTData, errData);
-
-            });
-
-            function gotData(data) {
-                console.log(data.val());
-                if(!(data.val() == null))
-                {
-                    localStorage.setItem("customer", $("#ffn").val());
-                    $(location).attr("href", "booker.html");
-                    
-                }
-            }
-
-
-            function gotTData(data) {
-                console.log(data.val());
-                if(!(data.val() == null))
-                {
-                    localStorage.setItem("translator", $("#ffn").val());
-                    $(location).attr("href", "translate.html");
-                    
-                }
-            }
-
-            function errData(data) {
-                console.log("Error!");
-            }
-
-        });
-    </script>
 </head>
         <body>
-            <img src="background.jpg" id=background>
+            <img src="pics/background.jpg" id=background>
             	
             
             
-            <img src="AA_Logo.png" id="logo">
-            <label id="welcome">Need help getting to your destination?</label>
-            <label id="orderat">Reserve a fellow passenger to help you translate</label>
+            <img src="pics/AA_Logo.png" id="logo">
+            <label id="welcome">Need Help Getting to Your Destination?</label>
+            <label id="orderat">Your fellow passengers can help</label>
 
-            <!-- <label id="wrong">Wrong FFN</label> -->
-            <!-- <hr id="upperline">
-            <hr id="botline"> -->
             <input type="text" id="ffn" value="Frequent Flyer Number" onfocus="if(this.value  == 'Frequent Flyer Number') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Frequent Flyer Number'; } ">
             <button id="orderto">Choose A Translator</button>
             <button id="imto">I'm A Translator</button>
 
-           <div name="language" class="dropdown">
-           		<div class="dropdown-content">
-			    <a href="#" class="menuOp" id="English">English</a>
-			    <a href="#" class="menuOp" id="Mandarin">Mandarin</a>
-			    <a href="#" class="menuOp" id="Spanish">Spanish</a>
-			    <a href="#" class="menuOp" id="German">German</a>
-			    <a href="#" class="menuOp" id="Russian">Russian</a>
-			  </div>
-			  <button class="dropbtn">Languages</button>
-			  
-			</div>
-
-            <!-- <div id="botrect">
-            <label id="level">Gold Level</label>
-            <label id="miles">Miles: 27564</label>
-            <label id="credit">Credit: $67.00</label> -->
         </body>
 </html>
