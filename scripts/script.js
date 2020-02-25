@@ -6,60 +6,35 @@ $(document).ready(function () {
         "databaseURL": "https://americanairlines-f737a.firebaseio.com/",
         "storageBucket": "americanairlines-f737a.appspot.com"
     };
+
     firebase.initializeApp(config);
 
     var database = firebase.database();
 
-
-
-    $(".menuOp").click(function () {
-
-        console.log($(this).attr('id'));
-        var language = $(this).attr('id');
-        $.ajax({
-            url: "translation_function",
-            data: { data:language},
-            dataType: 'json',
-            type: 'POST',
-            processData: false,
-            success: function (data) {
-                alert(data);
-            },
-            error: function () {
-                alert("post failed")
-            },
-        });
-
-
-    });
-    
-
-
-
-
-
+    // get customer from firebase database
     $("#orderto").click(function () {
         var ref = database.ref("users/" + $("#ffn").val());
         ref.once("value", gotData, errData);
     });
 
+    // get translator from firebase database
     $("#imto").click(function () {
         var ref = database.ref("translators/" + $("#ffn").val());
         ref.once("value", gotTData, errData);
 
     });
 
+    // if customer exists, cache ffn and relocate to booker view
     function gotData(data) {
         console.log(data.val());
         if(!(data.val() == null))
         {
             localStorage.setItem("customer", $("#ffn").val());
             $(location).attr("href", "booker.html");
-            
         }
     }
 
-
+    // if translator exists, cache ffn and relocate to translator view
     function gotTData(data) {
         console.log(data.val());
         if(!(data.val() == null))
