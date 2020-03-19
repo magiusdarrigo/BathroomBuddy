@@ -33,7 +33,7 @@ $(document).ready(function () {
     function gotTData(data) {
         var dataVal = data.val();
         transName = dataVal["first"];
-        $("#travelerLabel").html(transName +", Here is Your Travel Buddy.");
+        $("#travelerLabel").html(transName +", Here is Your Travel Buddy");
     }
 
     // load customer info

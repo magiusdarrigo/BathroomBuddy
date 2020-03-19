@@ -33,7 +33,7 @@ body
 	left: 50%;
     text-align:center;
     transform: translateX(-50%);
-	top: 80%;
+	top: 83%;
 	 
 	 
 	font-family: "Switzera ADF";
@@ -70,13 +70,15 @@ body
 	position: absolute;
 	width: 367px;
 	height: 113px;
-	left: 537px;
-	top: 70px;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	top: 10%;
 }
 
 #welcome {
 	position: absolute;
-	width: 1400px;
+	width: 1200px;
 	height: 127px;
 	left: 50%;
     text-align:center;
@@ -87,7 +89,7 @@ body
 	font-family: "Switzera ADF";
 	font-style: normal;
 	font-weight: normal;
-	font-size: 70px;
+	font-size: 60px;
 	line-height: 112px;
 	 
 	 
@@ -118,8 +120,6 @@ body
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	left: 0px;
-	top: 0px;
 
 
 	opacity: 0.11;

@@ -152,8 +152,10 @@ h1
 	position: absolute;
 	width: 367px;
 	height: 113px;
-	left: 536px;
-	top: 0px;
+	left: 50%;
+  text-align:center;
+  transform: translateX(-50%);
+	/*top: 0px;*/
 }
 
 #background {
