@@ -29,7 +29,7 @@ $(document).ready(function () {
           animation:{
               startup: true,
               duration: 1500,
-              easing: 'in',
+              easing: 'out',
             },
           vAxes: {
                 // Adds titles to each axis.
