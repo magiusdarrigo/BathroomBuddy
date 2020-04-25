@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>AAdvantage-Home</title>
+    <title>Bathroom Buddy-Home</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
@@ -10,15 +10,17 @@
 
 </head>
         <body>
-            <img src="pics/background.jpg" id=background>
-            	
-            <img src="pics/AA_Logo.png" id="logo">
-            <label id="welcome">Need Help Getting to Your Destination?</label>
-            <label id="orderat">Your fellow passengers can help</label>
+            <img src="pics/ocean.jpg" id=background>
+            <!-- <img src="pics/mountain2.jpg" id=background>-->            
+            <!-- <img src="pics/waterfall2.jpg" id=background> -->
+            <div id="pagewrap">
+                <img src="pics/bathroombuddytrans.png" id="logo">
+                <label id="slogan1">Put a catchy slogan here or something</label>
+                <label id="slogan2">Put a description her or something</label>
 
-            <input type="text" id="ffn" value="Frequent Flyer Number" onfocus="if(this.value  == 'Frequent Flyer Number') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Frequent Flyer Number'; } ">
-            <button id="orderto">Choose A Translator</button>
-            <button id="imto">I'm A Translator</button>
+                <input type="text" id="login" value="User ID" onfocus="if(this.value  == 'User ID') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'User ID'; } ">
+                <button id="loginbtn">Login</button>
+            </div>
 
         </body>
 </html>

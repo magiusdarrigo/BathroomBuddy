@@ -1,0 +1,34 @@
+body
+{
+	margin: 0;
+	height: 100%;
+	background-color: #e8e8e8;
+}
+
+#pagewrap{
+	width: 100%;
+	height: 100%;
+}
+
+#logo {
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+
+	/*hc*/
+	width: 367px;
+	height: 113px;
+	top:20%;
+}
+
+#background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	/*opacity: 0.8;
+	opacity: 0.4;*/
+	opacity: 0.5;
+}
