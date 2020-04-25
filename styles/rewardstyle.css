@@ -39,6 +39,7 @@ body
     text-align:center;
     transform: translateX(-50%);
     display:block;
+    margin-top: 50px;
 }
 
 .roww {
@@ -50,7 +51,7 @@ body
 	flex-direction: row;
 	justify-content: center;
     height: 400px;
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 #rewardlabel{
@@ -64,18 +65,63 @@ body
 }
 
 
-.giftcard {
+.points{
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: green;
+}
 
+.giftcard {
+	position: relative;
 	box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.65), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 	margin-top: 20px;
 	margin-left: 40px;
 	background-color: white;
 	border: 1px solid #e0e0e0;
-	width: 400px;
-	height: 400px;
+	width: 250px;
+	height: 320px;
 }
 
 #bottom{
 	height: 100px;
+}
+
+.giftpic {
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+
+	/*hc*/
+	width: 150px;
+	height: 150px;
+	margin-top: 10px;
+}
+
+.giftname{
+	position: relative;
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.giftbtn { 
+	position: relative;
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+	background: #004A9D;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 30px;
+	margin-top: 10px;
+	font-size: 25px;
+	width: 200px;
+	height: 50px;
 }
 

@@ -44,6 +44,17 @@ body
 	font-size: 25px;
 	margin-top: 20px;
 }
+#gaugescore{
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+	color: green;
+
+	font-size: 25px;
+	margin-top: 20px;
+}
 
 #gaugewrapper{
 	position: relative;
@@ -56,13 +67,21 @@ body
 	background-color: white;
 	border: 1px solid #e0e0e0;
 
-
+	/*padding: 50px;*/
 	width: 940px;
-	height: 540px;
+	height: 490px;
+	overflow: hidden;
 }
 
 #gauge{
-	position:relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	position:flex;
+	width: 600px;
+	height: 400px;
+	/*box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.65), inset 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+
 }
 
 #columnchart_material{
