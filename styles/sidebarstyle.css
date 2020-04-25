@@ -6,6 +6,19 @@
     
 }
 
+#logo {
+    position: relative;
+    left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+    display:block;
+
+    /*hc*/
+    width: 367px;
+    height: 113px;
+    top:20%;
+}
+
 #pagewrap{
     margin-left: 250px;
     width: 100%;
