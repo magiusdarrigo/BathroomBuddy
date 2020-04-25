@@ -25,12 +25,14 @@ $(document).ready(function () {
         console.log(dataVal["IP"]);
         console.log(dataVal["Rewards"]);
         console.log(dataVal["Device"]);
+        console.log(dataVal["Name"]);
         if(!(data.val() == null))
         {
             localStorage.setItem("customer", $("#login").val());
             localStorage.setItem("IP", dataVal["IP"]);
             localStorage.setItem("Rewards", dataVal["Rewards"]);
             localStorage.setItem("Device", dataVal["Device"]);
+            localStorage.setItem("FirstName", dataVal["Name"]);
             $(location).attr("href", "dashboard.html");
         }
     }
