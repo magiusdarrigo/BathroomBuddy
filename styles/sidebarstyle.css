@@ -2,8 +2,8 @@
 .wrapper {
     display: flex;
     width: 100%;
-    background-color: #e8e8e8;
-    /align-items: stretch;/
+    background-color: white;
+    
 }
 
 #pagewrap{

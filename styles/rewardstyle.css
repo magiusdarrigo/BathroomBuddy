@@ -32,3 +32,50 @@ body
 	opacity: 0.4;*/
 	opacity: 0.5;
 }
+
+#rewardwrapper {
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+    display:block;
+}
+
+.roww {
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+    display:flex;
+	flex-direction: row;
+	justify-content: center;
+    height: 400px;
+    margin-top: 20px;
+}
+
+#rewardlabel{
+	display: inline;
+	position: relative;
+}
+
+#rewards{
+	display: inline;
+	position: relative;
+}
+
+
+.giftcard {
+
+	box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.65), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+	margin-top: 20px;
+	margin-left: 40px;
+	background-color: white;
+	border: 1px solid #e0e0e0;
+	width: 400px;
+	height: 400px;
+}
+
+#bottom{
+	height: 100px;
+}
+

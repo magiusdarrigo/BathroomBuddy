@@ -12,13 +12,34 @@ $(document).ready(function () {
     var database = firebase.database();
 
 
-
-    google.charts.load('current', {'packages':['bar','line','gauge']});
+    google.charts.load('43', {'packages':['corechart']});
 
 
     google.charts.setOnLoadCallback(drawBarChart);
 
     function drawBarChart() {
+       
+        var chart = new google.visualization.BarChart(document.getElementById('columnchart_material'));
+       
+        var options = {
+          chart: {
+            title: 'Weekly Performance',
+            subtitle: 'Shower Usage',
+          },
+          animation:{
+              startup: true,
+              duration: 1500,
+              easing: 'in',
+            },
+          vAxes: {
+                // Adds titles to each axis.
+                0: {title: 'Day'},
+                1: {title: 'Carbon Footprint'}
+            },
+            colors: ['#B3D9FF']
+        };
+
+       
         var data = google.visualization.arrayToDataTable([
           ['Day', 'Shower'],
           ['Monday', 1000],
@@ -27,23 +48,11 @@ $(document).ready(function () {
           ['Thursday', 1030],
           ['Friday', 1030],
           ['Saturday', 1030],
-          ['Sunday', 1030],
+          ['Sunday', 1030]
         ]);
-
-        var options = {
-          chart: {
-            title: 'Weekly Performance',
-            subtitle: 'Shower Usage',
-          },
-          vAxes: {
-                // Adds titles to each axis.
-                0: {title: 'Carbon Footprint'}
-            },
-            colors: ['#B3D9FF']
-        };
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart.draw(data,options)
+       
     }
 
-});
 
+});

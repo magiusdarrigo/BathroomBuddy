@@ -19,7 +19,7 @@ $(document).ready(function () {
     {
         type: "indicator",
         mode: "gauge+number",
-        value: 40,
+        value: 45,
         title: { text: "Environment Score", font: { size: 24 } },
         // delta: { reference: 400, increasing: { color: "RebeccaPurple" } },
         gauge: {
@@ -29,9 +29,9 @@ $(document).ready(function () {
           borderwidth: 2,
           bordercolor: "gray",
           steps: [
-            { range: [0, 70], color: "A9F36A" },
-            { range: [70, 85], color: "FEFE69" },
-            { range: [85, 100], color: "ff6961" }
+            { range: [0, 15], color: "ff6961" },
+            { range: [15, 40], color: "FEFE69" },
+            { range: [40, 100], color: "A9F36A" }
           ]
         }
       }
