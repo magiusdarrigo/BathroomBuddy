@@ -13,26 +13,26 @@ $(document).ready(function () {
 
     // get customer from firebase database
     $("#loginbtn").click(function () {
-        // var ref = database.ref("users/" + $("#ffn").val());
-        // ref.once("value", gotData, errData);
-        gotData($("#login").val());
+        console.log($("#login").val());
+        var ref = database.ref("Users/" + $("#login").val());
+        ref.once("value", gotData, errData);
     });
 
     // if customer exists, cache ffn and relocate to booker view
     function gotData(data) {
-        console.log(data);
-        if(!(data == null))
+        var dataVal = data.val()
+        console.log(dataVal);
+        console.log(dataVal["IP"]);
+        console.log(dataVal["Rewards"]);
+        console.log(dataVal["Device"]);
+        if(!(data.val() == null))
         {
             localStorage.setItem("customer", $("#login").val());
+            localStorage.setItem("IP", dataVal["IP"]);
+            localStorage.setItem("Rewards", dataVal["Rewards"]);
+            localStorage.setItem("Device", dataVal["Device"]);
             $(location).attr("href", "dashboard.html");
         }
-
-        // console.log(data.val());
-        // if(!(data.val() == null))
-        // {
-        //     localStorage.setItem("customer", $("#login").val());
-        //     $(location).attr("href", "dashboard.html");
-        // }
     }
 
     function errData(data) {
