@@ -17,7 +17,7 @@ We are most proud of the UI/UX design that animates upon loading, giving the app
 ## What we learned
 We learned to create a dynamic and modern application that helps conserve water. Each one of our team members improved our software and hardware skills. We did research to see what made a modern app visually appealing and attempted for a minimalist look.
 
-##What's next for Bathroom Buddy
+## What's next for Bathroom Buddy
 We are looking to include toilet flushing data on top of the shower and light data. In addition, we would like to create an even smaller device with cheaper and waterproof components to further increase practicality.
 
 ## How to run the web app
