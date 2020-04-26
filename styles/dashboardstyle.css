@@ -103,7 +103,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.1);
 	background-color: white;
 
 
@@ -129,7 +129,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.1);
 	background-color: white;
 	padding:10px;
 }
@@ -144,7 +144,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.1);
 	background-color: white;
 
 }
@@ -229,7 +229,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.1);
 	background-color: white;
 	padding:2px;
 
