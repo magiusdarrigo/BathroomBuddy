@@ -11,51 +11,90 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
+    var showerH = [];
+    var showerL = [];
+    var ip = localStorage.getItem("IP");
+    var device = localStorage.getItem("Device");
+    getSensorVals();
 
-    google.charts.load('43', {'packages':['corechart']});
 
 
-    google.charts.setOnLoadCallback(drawBarChart);
-
-    function drawBarChart() {
-       
-        var chart = new google.visualization.BarChart(document.getElementById('columnchart_material'));
-       
-        var options = {
-          chart: {
-            title: 'Weekly Performance',
-            subtitle: 'Shower Usage',
-          },
-          animation:{
-              startup: true,
-              duration: 1500,
-              easing: 'out',
-            },
-          vAxes: {
-                // Adds titles to each axis.
-                0: {title: 'Day'},
-                1: {title: 'Carbon Footprint'}
-            },
-          hAxes: {
-                0: {title: 'Carbon Footprint'}
-            },
-            colors: ['#B3D9FF']
-        };
-
-       
-        var data = google.visualization.arrayToDataTable([
-          ['Day', 'Shower'],
-          ['Monday', 1000],
-          ['Tuesday', 1170],
-          ['Wednesday', 660],
-          ['Thursday', 1030],
-          ['Friday', 1030],
-          ['Saturday', 1030],
-          ['Sunday', 1030]
-        ]);
-        chart.draw(data,options)
-       
+    function getSensorVals() {
+        var ref = database.ref("Universe/" + ip +"/"+device);
+        ref.once("value", gotData, errData);
     }
+
+    function gotData(data) {
+        var dataVal = data.val();
+
+        for(var date in dataVal) {
+            var vals = dataVal[date];
+            var showerEvents = vals["ShowerEvents"];
+
+            var showerHeatIndexes = showerEvents["ShowerHeatIndexes"];
+            var showerLengths = showerEvents["ShowerLengths"];
+
+            for(var h in showerHeatIndexes){
+                showerH.push(showerHeatIndexes[h]);
+            }
+            for(var s in showerLengths){
+                showerL.push(showerLengths[s]);
+            }
+        }
+        console.log(showerH);
+        console.log(showerL);
+        nextMove();
+    }
+    function errData(data) {
+        console.log("Error!");
+    }
+
+    function nextMove() {
+      google.charts.load('43', {'packages':['corechart']});
+
+
+      google.charts.setOnLoadCallback(drawBarChart);
+
+      function drawBarChart() {
+         
+          var chart = new google.visualization.BarChart(document.getElementById('columnchart_material'));
+         
+          var options = {
+            title: "Weekly Shower Usage",
+            animation:{
+                startup: true,
+                duration: 1500,
+                easing: 'out',
+              },
+            vAxes: {
+                  // Adds titles to each axis.
+                  0: {title: 'Day'},
+                  1: {title: 'Environmental Footprint'}
+              },
+            hAxes: {
+                  0: {title: 'Environmental Footprint'}
+              },
+              colors: ['#9adac3','#bad9fc']
+          };
+
+         
+          var data = google.visualization.arrayToDataTable([
+            ['Day', 'Shower Heat', 'Shower Length'],
+            ['Monday', showerH[0]*6, showerL[0]],
+            ['Tuesday', showerH[1]*6, showerL[1]],
+            ['Wednesday', showerH[2]*6, showerL[2]],
+            ['Thursday', showerH[3]*6, showerL[3]],
+            ['Friday', showerH[4]*6, showerL[4]],
+            ['Saturday', showerH[5]*6, showerL[5]],
+            ['Sunday', showerH[6]*6, showerL[6]]
+          ]);
+          chart.draw(data,options)
+         
+      }
+    }
+
+
+    
 
 
 });

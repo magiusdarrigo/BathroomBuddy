@@ -11,51 +11,84 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
+    var light= [];
 
-    google.charts.load('43', {'packages':['corechart']});
+    var ip = localStorage.getItem("IP");
+    var device = localStorage.getItem("Device");
+    getSensorVals();
 
 
-    google.charts.setOnLoadCallback(drawBarChart);
 
-    function drawBarChart() {
-       
-        var chart = new google.visualization.BarChart(document.getElementById('columnchart_material'));
-       
-        var options = {
-          chart: {
-            title: 'Weekly Performance',
-            subtitle: 'Light Usage',
-          },
-          animation:{
-              startup: true,
-              duration: 1500,
-              easing: 'out',
-            },
-          vAxes: {
-                // Adds titles to each axis.
-                0: {title: 'Day'},
-                1: {title: 'Carbon Footprint'}
-            },
-          hAxes: {
-                0: {title: 'Carbon Footprint'}
-            },
-            colors: ['#B3D9FF']
-        };
-
-       
-        var data = google.visualization.arrayToDataTable([
-          ['Day', 'Light'],
-          ['Monday', 1000],
-          ['Tuesday', 1170],
-          ['Wednesday', 660],
-          ['Thursday', 1030],
-          ['Friday', 1030],
-          ['Saturday', 1030],
-          ['Sunday', 1030]
-        ]);
-        chart.draw(data,options)
-       
+    function getSensorVals() {
+        var ref = database.ref("Universe/" + ip +"/"+device);
+        ref.once("value", gotData, errData);
     }
 
-});
+    function gotData(data) {
+        var dataVal = data.val();
 
+        for(var date in dataVal) {
+            var vals = dataVal[date];
+            var lightEvents = vals["LightEvents"];
+            for(var l in lightEvents){
+                light.push(lightEvents[l]);
+            }
+
+        }
+        console.log(light);
+        nextMove();
+    }
+    function errData(data) {
+        console.log("Error!");
+    }
+
+    function nextMove() {
+      google.charts.load('43', {'packages':['corechart']});
+
+
+      google.charts.setOnLoadCallback(drawBarChart);
+
+      function drawBarChart() {
+         
+          var chart = new google.visualization.BarChart(document.getElementById('columnchart_material'));
+         
+          var options = {
+            title: "Weekly Light Usage",
+
+            animation:{
+                startup: true,
+                duration: 1500,
+                easing: 'out',
+              },
+            vAxes: {
+                  // Adds titles to each axis.
+                  0: {title: 'Day'},
+                  1: {title: 'Environmental Footprint'}
+              },
+            hAxes: {
+                  0: {title: 'Environmental Footprint'}
+              },
+              colors: ['#f5f382']
+          };
+
+         
+          var data = google.visualization.arrayToDataTable([
+            ['Day', 'Light'],
+            ['Monday', light[0]/3],
+            ['Tuesday', light[1]/3],
+            ['Wednesday', light[2]/3],
+            ['Thursday', light[3]/3],
+            ['Friday', light[4]/3],
+            ['Saturday', light[5]/3],
+            ['Sunday', light[6]/3]
+          ]);
+          chart.draw(data,options)
+         
+      }
+    }
+
+
+    
+
+
+});
