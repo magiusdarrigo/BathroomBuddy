@@ -6,7 +6,7 @@ Bathroom Buddy is a simple yet powerful device that helps users decrease their e
 Water is one of our most finite resources - we cannot live without it. The average American shower uses 17.2 gallons and takes roughly 8.2 minutes. We realized that by cutting down showers by just a minute, we could be saving 2.1 gallons every shower session!
 
 ## How we built it
-We sautered an ESP8266 with photoresistors to sense light changes. The device uses node.js to send the data to a Firebase database where our web app pulls data from. The web app was built with HTML, CSS, JavaScript/JQuery, Bootstrap, Google CHarts API, and amCharts API.
+We sautered an ESP8266 with photoresistors and a humidity and temperature sensor to sense light and shower events. The device uses node.js to send the data to a Firebase database where our web app pulls data from. The web app was built with HTML, CSS, JavaScript/JQuery, Bootstrap, Google CHarts API, and amCharts API.
 
 ## Challenges we ran into
 Figuring out how to assemble the hardware into a small form was one of the most difficult parts. We wanted the hardware to be cost effective and light-weight.
