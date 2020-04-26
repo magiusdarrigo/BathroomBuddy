@@ -295,7 +295,7 @@ $(document).ready(function () {
             ]);
 
             var options = {
-              title: "Environmental Performance Breakdown",
+              // title: "Environmental Performance Breakdown",
               chart: {
                 title: 'Environment Score Breakdown',
                 subtitle: 'Shower Heat, Shower Length, and Light Impact',
@@ -397,7 +397,7 @@ $(document).ready(function () {
             ]);
 
             var options = {
-              title: "Environmental Performance Breakdown",
+              // title: "Environmental Performance Breakdown",
               chart: {
                 title: 'Environment Score Breakdown',
                 subtitle: 'Shower Heat, Shower Length, and Light Impact',
