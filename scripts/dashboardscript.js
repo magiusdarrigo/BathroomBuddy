@@ -115,8 +115,6 @@ $(document).ready(function () {
 
 
 
-
-
     var rewards = localStorage.getItem("Rewards");
     $("#pointslabel").html("Rewards Points: "+rewards);
 
@@ -382,6 +380,114 @@ $(document).ready(function () {
           }, 30);
         }
     }
+
+    function resizeGoogleCharts() {
+      google.charts.setOnLoadCallback(drawBarChart);
+
+        function drawBarChart() {
+            var avgH = average(showerH);
+            var avgS = average(showerL);
+            var avgL = average(light);
+            var data = google.visualization.arrayToDataTable([
+              ['Day', 'Score Impact', { role: 'style' }],
+              ['Shower Length', avgS, '#B3D9FF'],
+              ['Light', avgL/3, '#88BBE4'],
+              ['Shower Heat', avgH * 6, '#87DCC0'],
+            ]);
+
+            var options = {
+              chart: {
+                title: 'Environment Score Breakdown',
+                subtitle: 'Shower Heat, Shower Length, and Light Impact',
+                
+              },
+              legend: {position: 'none'},
+              vAxes: {
+                    // Adds titles to each axis.
+                    0: {title: 'Score Impact'}
+                },
+
+                // colors: ['#B3D9FF','#87DCC0', '#88BBE4']
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+            chart.draw(data, options);
+        }
+
+        google.charts.setOnLoadCallback(drawLineChart);
+
+
+        function drawLineChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Day', 'Shower Heat', 'Shower Length', 'Light'],
+              ['Mon', showerH[0]*6, showerL[0], light[0]/3], //0,012
+              ['Tues', showerH[1]*6, showerL[1], light[1]/3],
+              ['Wed', showerH[2]*6, showerL[2], light[2]/3],
+              ['Thurs', showerH[3]*6, showerL[3], light[3]/3],
+              ['Fri', showerH[4]*6, showerL[4], light[4]/3],
+              ['Sat', showerH[5]*6, showerL[5], light[5]/3],
+              ['Sun', showerH[6]*6, showerL[6], light[6]/3], //6,012
+            ]);
+
+            var dumbieData = google.visualization.arrayToDataTable([
+              ['Day', 'Shower Heat', 'Shower Length', 'Light'],
+              ['Mon', showerH[0]*6, showerL[0], light[0]/3],
+              ['Tues', 0, 0, 0],
+              ['Wed', 0, 0, 0],
+              ['Thurs', 0, 0, 0],
+              ['Fri', 0, 0, 0],
+              ['Sat', 0, 0, 0],
+              ['Sun', 0, 0, 0],
+              ]);
+
+          var options = {
+            chart: {
+              title: 'Weekly Performance',
+              subtitle: 'Shower, Lights, and Toilet Usage'
+            },
+            vAxes: {
+                // Adds titles to each axis.
+                0: {title: 'Environmental Footprint'}
+            },
+
+            colors: ['#87DCC0','#B3D9FF', '#88BBE4']
+          };
+
+          var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+         
+          var index = 1;
+          var s = setInterval(function(){
+            if(index==7) {
+                clearInterval(s);
+            }
+            if(index<7&&dumbieData.getValue(index,1) < data.getValue(index, 1)){
+              dumbieData.setValue(index,1, dumbieData.getValue(index,1)+(data.getValue(index,1)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,2) < data.getValue(index, 2)){
+              dumbieData.setValue(index,2, dumbieData.getValue(index,2)+(data.getValue(index,2)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,3) < data.getValue(index, 3)){
+              dumbieData.setValue(index,3, dumbieData.getValue(index,3)+(data.getValue(index,3)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,1)>=data.getValue(index,1) && dumbieData.getValue(index,2)>=data.getValue(index,2) && dumbieData.getValue(index,3)>=data.getValue(index,3))
+            {
+              index++;
+            }
+
+
+            chart.draw(dumbieData, google.charts.Line.convertOptions(options));
+
+          }, 30);
+        }
+    }
+
+
+
+
+    $(window).resize(function () {
+          resizeGoogleCharts();      
+      });
     
 
 
