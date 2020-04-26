@@ -36,26 +36,25 @@ $(document).ready(function () {
         axis.min = 0;
         axis.max = 100;
         axis.strictMinMax = true;
-
         var colorSet = new am4core.ColorSet();
 
         var range1 = axis.axisRanges.create();
         range1.value = 0;
         range1.endValue = 25;
         range1.axisFill.fillOpacity = 1;
-        range1.axisFill.fill = am4core.color("#ff6961");
+        range1.axisFill.fill = am4core.color("#bad9fc");
         range1.axisFill.zIndex = -1;
         var range2 = axis.axisRanges.create();
         range2.value = 25;
         range2.endValue = 80;
         range2.axisFill.fillOpacity = 1;
-        range2.axisFill.fill = am4core.color("#FEFE69");
+        range2.axisFill.fill = am4core.color("#92bce0");
         range2.axisFill.zIndex = -1;
         var range3 = axis.axisRanges.create();
         range3.value = 80;
         range3.endValue = 100;
         range3.axisFill.fillOpacity = 1;
-        range3.axisFill.fill = am4core.color("#A9F36A");
+        range3.axisFill.fill = am4core.color("#9adac3");
         range3.axisFill.zIndex = -1;
 
         var gradient = new am4core.LinearGradient();
@@ -71,6 +70,7 @@ $(document).ready(function () {
 
         var hand = chart.hands.push(new am4charts.ClockHand());
         hand.radius = am4core.percent(97);
+        
 
         setInterval(function() {
             hand.showValue(100, 1000, am4core.ease.cubicOut);
@@ -78,11 +78,71 @@ $(document).ready(function () {
 
 
     }); 
+
+    am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // create chart
+        var chart = am4core.create("gauge2", am4charts.GaugeChart);
+        chart.innerRadius = -15;
+
+        var axis = chart.xAxes.push(new am4charts.ValueAxis());
+        axis.min = 0;
+        axis.max = 15;
+        axis.strictMinMax = true;
+        var colorSet = new am4core.ColorSet();
+
+        var range1 = axis.axisRanges.create();
+        range1.value = 0;
+        range1.endValue = 5;
+        range1.axisFill.fillOpacity = 1;
+        range1.axisFill.fill = am4core.color("#92bce0");
+        range1.axisFill.zIndex = -1;
+        var range2 = axis.axisRanges.create();
+        range2.value = 5;
+        range2.endValue = 15;
+        range2.axisFill.fillOpacity = 1;
+        range2.axisFill.fill = am4core.color("#bad9fc");
+        range2.axisFill.zIndex = -1;
+        var range3 = axis.axisRanges.create();
+        range3.value = 20;
+        range3.endValue = 30;
+        range3.axisFill.fillOpacity = 1;
+        range3.axisFill.fill = am4core.color("#9adac3");
+        range3.axisFill.zIndex = -1;
+
+        var gradient = new am4core.LinearGradient();
+        // gradient.stops.push({color:am4core.color("red")})
+        // gradient.stops.push({color:am4core.color("yellow")})
+        // gradient.stops.push({color:am4core.color("green")})
+
+        axis.renderer.line.stroke = gradient;
+        axis.renderer.line.strokeWidth = 15;
+        axis.renderer.line.strokeOpacity = 1;
+
+        axis.renderer.grid.template.disabled = true;
+
+        var hand = chart.hands.push(new am4charts.ClockHand());
+        hand.radius = am4core.percent(97);
+        
+
+        setInterval(function() {
+            hand.showValue(15, 1000, am4core.ease.cubicOut);
+        }, 500);
+
+
+    }); 
+
+
+
     var bar = new ProgressBar.Line(progressbar, {
       strokeWidth: 1,
       easing: 'easeInOut',
       duration: 1400,
-      color: '#A9F36A',
+      color: '#9adac3',
       trailColor: '#eee',
       trailWidth: 1,
       svgStyle: {width: '100%', height: '100%'},
@@ -94,7 +154,7 @@ $(document).ready(function () {
           position: 'absolute',
           right: '0',
           top: '40px',
-          padding: 0,
+          padding: '30px',
           margin: 0,
           transform: null
         },
@@ -104,10 +164,10 @@ $(document).ready(function () {
       to: {color: '#ED6A5A'},
       step: (state, bar) => {
         if(rewards <= 2500) {   
-            bar.setText(Math.round(bar.value() * 2500) + ' /2500');
+            bar.setText(Math.round(bar.value() * 2500) + '/2500');
         }
         else {
-            bar.setText(rewards + ' /2500');
+            bar.setText(rewards + '/2500');
         }
       }
     });
@@ -195,13 +255,13 @@ $(document).ready(function () {
     function drawBarChart() {
         var data = google.visualization.arrayToDataTable([
           ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Monday', 1000, 400, 200],
-          ['Tuesday', 1170, 460, 250],
-          ['Wednesday', 660, 1120, 300],
-          ['Thursday', 1030, 540, 350],
-          ['Friday', 1030, 540, 350],
-          ['Saturday', 1030, 540, 350],
-          ['Sunday', 1030, 540, 350],
+          ['Mon', 1000, 400, 200],
+          ['Tues', 1170, 460, 250],
+          ['Wed', 660, 1120, 300],
+          ['Thurs', 1030, 540, 350],
+          ['Fri', 1030, 540, 350],
+          ['Sat', 1030, 540, 350],
+          ['Sun', 1030, 540, 350],
         ]);
 
         var options = {
@@ -225,24 +285,24 @@ $(document).ready(function () {
 
         var data = google.visualization.arrayToDataTable([
           ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Monday', 1000, 400, 200], //0,012
-          ['Tuesday', 1170, 460, 250],
-          ['Wednesday', 660, 1120, 300],
-          ['Thursday', 1030, 540, 350],
-          ['Friday', 1030, 540, 350],
-          ['Saturday', 1030, 540, 350],
-          ['Sunday', 1030, 540, 350], //6,012
+          ['Mon', 1000, 400, 200], //0,012
+          ['Tues', 1170, 460, 250],
+          ['Wed', 660, 1120, 300],
+          ['Thurs', 1030, 540, 350],
+          ['Fri', 1030, 540, 350],
+          ['Sat', 1030, 540, 350],
+          ['Sun', 1030, 540, 350], //6,012
         ]);
 
         var dumbieData = google.visualization.arrayToDataTable([
           ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Monday', 1000, 400, 200],
-          ['Tuesday', 0, 0, 0],
-          ['Wednesday', 0, 0, 0],
-          ['Thursday', 0, 0, 0],
-          ['Friday', 0, 0, 0],
-          ['Saturday', 0, 0, 0],
-          ['Sunday', 0, 0, 0],
+          ['Mon', 1000, 400, 200],
+          ['Tues', 0, 0, 0],
+          ['Wed', 0, 0, 0],
+          ['Thurs', 0, 0, 0],
+          ['Fri', 0, 0, 0],
+          ['Sat', 0, 0, 0],
+          ['Sun', 0, 0, 0],
           ]);
 
       var options = {
@@ -277,6 +337,9 @@ $(document).ready(function () {
         if(dumbieData.getValue(index,1)>=data.getValue(index,1) && dumbieData.getValue(index,2)>=data.getValue(index,2) && dumbieData.getValue(index,3)>=data.getValue(index,3))
         {
           index++;
+        }
+        if(index>6) {
+
         }
         // console.log(data.getValue(6,1));
         // console.log(data.getValue(6,2));

@@ -32,20 +32,55 @@ body
 	opacity: 0.4;*/
 	opacity: 0.5;
 }
+.month {
+	position: absolute;
+	left: 0px;
+	height: 40px;
+	text-align: left;
+	padding-left: 10px;
+	padding-top:5px;
+	padding-bottom: 5px;
+	width: 100%;
+	border: 1px solid rgb(202,202,202);
+	font-size: 20px;
+	color: white;
+
+	background-color: #92bce0;
+}
+
+.energylabel {
+	font-size: 20px;
+	margin-top: 60px;
+	color: #757575;
+
+}
+
+.energybill {
+	font-size: 45px;
+	margin-top: 10px;
+	color: black;
+	font-weight: bold;
+}
+
+.energydiff {
+	font-size: 30px;
+	color: #9adac3;
+	margin-top:-10px;
+	font-weight:bold;
+}
 #gaugeid{
 	position: relative;
 	left: 50%;
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	color: green;
+	color: #757575;
 	height:10%;
 	font-size: 25px;
 	margin-top: 1%;
 	/*font-family: 'Montserrat';*/
 	font-size: 25;
 	font-weight:normal;
-	color:#48586b;
 }
 
 #gaugescore{
@@ -54,7 +89,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	color: green;
+	color: #cacaca;
 	margin-top: 4px;
 	font-size: 25px;
 }
@@ -67,7 +102,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	background-color: white;
 
 
@@ -79,7 +114,8 @@ body
     text-align:center;
     transform: translateX(-50%);
     position:flex;
-	height:80%;
+	height:82%;
+
 
 
 }
@@ -92,7 +128,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	background-color: white;
 }
 
@@ -105,7 +141,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	background-color: white;
 
 
@@ -121,7 +157,7 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	background-color: white;
 
 }
@@ -136,14 +172,13 @@ body
     text-align:center;
     transform: translateX(-50%);
 	display:block;
-	color: green;
+	color: #757575;
 	height:10%;
 	font-size: 20px;
-	margin-top: 10%;
+	margin-top: 25px;
 	/*font-family: 'Montserrat';*/
-	font-size: 25;
+	font-size: 25px;
 	font-weight:normal;
-	color:#48586b;
 }
 
 #mathlabel {
@@ -155,11 +190,11 @@ body
 	color: green;
 	height:10%;
 	font-size: 20px;
-	margin-top: 20%;
+	margin-top: 6px;
 	/*font-family: 'Montserrat';*/
 	font-size: 25;
 	font-weight:normal;
-	color:#48586b;
+	color:#cacaca;
 }
 
 #progressbar {
@@ -167,7 +202,62 @@ body
     text-align:center;
     transform: translateX(-50%);
   	width: 85%;
-  	height: 30px;
-  	margin-top: 10%;
+  	height: 60px;
+  	margin-top: 40px;
+  	margin-bottom: 20px;
   	position: relative;
+}
+
+#gauge2id{
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+	color: #757575;
+	height:10%;
+	font-size: 25px;
+	margin-top: 1%;
+	/*font-family: 'Montserrat';*/
+	font-size: 25;
+	font-weight:normal;
+}
+
+#gauge2score{
+	position: relative;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+	color: #cacaca;
+	margin-top: 4px;
+	font-size: 25px;
+}
+
+#gauge2wrapper{
+	position: absolute;
+	width:100%;
+	height:100%;
+	left: 50%;
+    text-align:center;
+    transform: translateX(-50%);
+	display:block;
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
+	background-color: white;
+	padding:2px;
+
+
+	overflow: hidden;
+}
+
+#gauge2{
+	left: 50%;
+    text-align:center;
+
+    transform: translateX(-50%);
+    position:flex;
+	height:84%;
+	width:100%;
+	
+
 }

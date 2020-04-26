@@ -81,7 +81,7 @@ body
 
 .giftcard {
 	position: relative;
-	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);
+	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	margin-top: 20px;
 	margin-left: 40px;
 	background-color: white;
@@ -129,6 +129,13 @@ body
 	font-size: 25px;
 	width: 200px;
 	height: 50px;
-	outline: none;
+	outline: hidden;
 }
+
+.giftbtn:active {
+    outline: none;
+    border: none;
+}
+
+.giftbtn:focus {outline:0;}
 
