@@ -3,6 +3,7 @@ body
 	margin: 0;
 	height: 100%;
 	background: #FFFFFF;
+	font-family: 'Montserrat';
 }
 
 #pagewrap{
@@ -34,6 +35,7 @@ body
 }
 
 #rewardwrapper {
+	font-family: 'Montserrat';
 	position: relative;
 	left: 50%;
     text-align:center;
@@ -61,6 +63,7 @@ body
 }
 
 #rewardlabel{
+	font-family: 'Montserrat';
 	position: relative;
 	left: 50%;
     text-align:center;
@@ -81,6 +84,7 @@ body
 }
 
 #mathlabel {
+	font-family: 'Montserrat';
 	position: relative;
 	left: 50%;
     text-align:center;
@@ -109,7 +113,7 @@ body
 
 
 .points{
-	font-family: "Switzera ADF";
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 40px;
@@ -117,6 +121,7 @@ body
 
 .giftcard {
 	position: relative;
+	font-family: 'Montserrat';
 	box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);
 	margin-top: 10px;
 	margin-left: 40px;
@@ -146,7 +151,7 @@ body
 
 .giftname{
 	position: relative;
-	font-family: "Switzera ADF";
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
@@ -155,7 +160,7 @@ body
 
 .giftbtn { 
 	position: relative;
-	font-family: "Switzera ADF";
+	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: normal;
 	color: #FFFFFF;
