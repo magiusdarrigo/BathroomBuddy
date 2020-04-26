@@ -10,94 +10,117 @@ $(document).ready(function () {
     firebase.initializeApp(config);
 
     var database = firebase.database();
+    var rewards = localStorage.getItem("Rewards");
+    $("#pointslabel").html("Rewards Points: "+rewards);
 
-
+    if(rewards > 2500) {
+        $("#mathlabel").html("Congrats! You may claim a prize!");
+    }
+    else {
+        $("#mathlabel").html((2500-rewards) +" more points until your next prize!");
+    }
 
     google.charts.load('current', {'packages':['bar','line','gauge']});
 
-    // am4core.ready(function() {
+    am4core.ready(function() {
 
-    //     // Themes begin
-    //     am4core.useTheme(am4themes_animated);
-    //     // Themes end
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
 
-    //     // create chart
-    //     var chart = am4core.create("gauge", am4charts.GaugeChart);
-    //     chart.innerRadius = -15;
+        // create chart
+        var chart = am4core.create("gauge", am4charts.GaugeChart);
+        chart.innerRadius = -15;
 
-    //     var axis = chart.xAxes.push(new am4charts.ValueAxis());
-    //     axis.min = 0;
-    //     axis.max = 100;
-    //     axis.strictMinMax = true;
+        var axis = chart.xAxes.push(new am4charts.ValueAxis());
+        axis.min = 0;
+        axis.max = 100;
+        axis.strictMinMax = true;
 
-    //     var colorSet = new am4core.ColorSet();
+        var colorSet = new am4core.ColorSet();
 
-    //     var range1 = axis.axisRanges.create();
-    //     range1.value = 0;
-    //     range1.endValue = 25;
-    //     range1.axisFill.fillOpacity = 1;
-    //     range1.axisFill.fill = am4core.color("#ff6961");
-    //     range1.axisFill.zIndex = -1;
-    //     var range2 = axis.axisRanges.create();
-    //     range2.value = 25;
-    //     range2.endValue = 80;
-    //     range2.axisFill.fillOpacity = 1;
-    //     range2.axisFill.fill = am4core.color("#FEFE69");
-    //     range2.axisFill.zIndex = -1;
-    //     var range3 = axis.axisRanges.create();
-    //     range3.value = 80;
-    //     range3.endValue = 100;
-    //     range3.axisFill.fillOpacity = 1;
-    //     range3.axisFill.fill = am4core.color("#A9F36A");
-    //     range3.axisFill.zIndex = -1;
+        var range1 = axis.axisRanges.create();
+        range1.value = 0;
+        range1.endValue = 25;
+        range1.axisFill.fillOpacity = 1;
+        range1.axisFill.fill = am4core.color("#ff6961");
+        range1.axisFill.zIndex = -1;
+        var range2 = axis.axisRanges.create();
+        range2.value = 25;
+        range2.endValue = 80;
+        range2.axisFill.fillOpacity = 1;
+        range2.axisFill.fill = am4core.color("#FEFE69");
+        range2.axisFill.zIndex = -1;
+        var range3 = axis.axisRanges.create();
+        range3.value = 80;
+        range3.endValue = 100;
+        range3.axisFill.fillOpacity = 1;
+        range3.axisFill.fill = am4core.color("#A9F36A");
+        range3.axisFill.zIndex = -1;
 
-    //     var gradient = new am4core.LinearGradient();
-    //     // gradient.stops.push({color:am4core.color("red")})
-    //     // gradient.stops.push({color:am4core.color("yellow")})
-    //     // gradient.stops.push({color:am4core.color("green")})
+        var gradient = new am4core.LinearGradient();
+        // gradient.stops.push({color:am4core.color("red")})
+        // gradient.stops.push({color:am4core.color("yellow")})
+        // gradient.stops.push({color:am4core.color("green")})
 
-    //     axis.renderer.line.stroke = gradient;
-    //     axis.renderer.line.strokeWidth = 15;
-    //     axis.renderer.line.strokeOpacity = 1;
+        axis.renderer.line.stroke = gradient;
+        axis.renderer.line.strokeWidth = 15;
+        axis.renderer.line.strokeOpacity = 1;
 
-    //     axis.renderer.grid.template.disabled = true;
+        axis.renderer.grid.template.disabled = true;
 
-    //     var hand = chart.hands.push(new am4charts.ClockHand());
-    //     hand.radius = am4core.percent(97);
+        var hand = chart.hands.push(new am4charts.ClockHand());
+        hand.radius = am4core.percent(97);
 
-    //     setInterval(function() {
-    //         hand.showValue(100, 1000, am4core.ease.cubicOut);
-    //     }, 2000);
+        setInterval(function() {
+            hand.showValue(100, 1000, am4core.ease.cubicOut);
+        }, 500);
 
 
-    // }); 
+    }); 
+    var bar = new ProgressBar.Line(progressbar, {
+      strokeWidth: 1,
+      easing: 'easeInOut',
+      duration: 1400,
+      color: '#A9F36A',
+      trailColor: '#eee',
+      trailWidth: 1,
+      svgStyle: {width: '100%', height: '100%'},
+      text: {
+        style: {
+          // Text color.
+          // Default: same as stroke color (options.color)
+          color: '#000000',
+          position: 'absolute',
+          right: '0',
+          top: '40px',
+          padding: 0,
+          margin: 0,
+          transform: null
+        },
+        autoStyleContainer: false
+      },
+      from: {color: '#FFEA82'},
+      to: {color: '#ED6A5A'},
+      step: (state, bar) => {
+        if(rewards <= 2500) {   
+            bar.setText(Math.round(bar.value() * 2500) + ' /2500');
+        }
+        else {
+            bar.setText(rewards + ' /2500');
+        }
+      }
+    });
 
-    // $('#gauge').gauge({
-    //   values: {
-    //     0 : '0',
-    //     20: '20',
-    //     40: '40',
-    //     60: '60',
-    //     80: '80',
-    //     100: '100'
-    //   },
-    //   colors: {
-    //     0 : '#ff6961',
-    //     25: '#FEFE69',
-    //     80: '#A9F36A'
-    //   },
-    //   angles: [
-    //     180,
-    //     360
-    //   ],
-    //   lineWidth: 10,
-    //   arrowWidth: 20,
-    //   arrowColor: '#ccc',
-    //   inset:true,
-
-    //   value: 30
-    // });
-
+    if(rewards > 2500)
+    {   
+        // bar.setValue(rewards);
+        bar.animate(1.0); 
+    }
+    else 
+    {
+        bar.animate(rewards/2500); 
+    }
 
     // var data = [
     // {
@@ -167,34 +190,34 @@ $(document).ready(function () {
     // }
 
 
-    // google.charts.setOnLoadCallback(drawBarChart);
+    google.charts.setOnLoadCallback(drawBarChart);
 
-    // function drawBarChart() {
-    //     var data = google.visualization.arrayToDataTable([
-    //       ['Day', 'Shower', 'Toilet', 'Light'],
-    //       ['Monday', 1000, 400, 200],
-    //       ['Tuesday', 1170, 460, 250],
-    //       ['Wednesday', 660, 1120, 300],
-    //       ['Thursday', 1030, 540, 350],
-    //       ['Friday', 1030, 540, 350],
-    //       ['Saturday', 1030, 540, 350],
-    //       ['Sunday', 1030, 540, 350],
-    //     ]);
+    function drawBarChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day', 'Shower', 'Toilet', 'Light'],
+          ['Monday', 1000, 400, 200],
+          ['Tuesday', 1170, 460, 250],
+          ['Wednesday', 660, 1120, 300],
+          ['Thursday', 1030, 540, 350],
+          ['Friday', 1030, 540, 350],
+          ['Saturday', 1030, 540, 350],
+          ['Sunday', 1030, 540, 350],
+        ]);
 
-    //     var options = {
-    //       chart: {
-    //         title: 'Weekly Performance',
-    //         subtitle: 'Shower, Light, and Toilet Usage',
-    //       },
-    //       vAxes: {
-    //             // Adds titles to each axis.
-    //             0: {title: 'Carbon Footprint'}
-    //         },
-    //         colors: ['#B3D9FF','#87DCC0', '#88BBE4']
-    //     };
-    //     var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-    //     chart.draw(data, google.charts.Bar.convertOptions(options));
-    // }
+        var options = {
+          chart: {
+            title: 'Weekly Performance',
+            subtitle: 'Shower, Light, and Toilet Usage',
+          },
+          vAxes: {
+                // Adds titles to each axis.
+                0: {title: 'Carbon Footprint'}
+            },
+            colors: ['#B3D9FF','#87DCC0', '#88BBE4']
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
 
     google.charts.setOnLoadCallback(drawLineChart);
 
@@ -266,4 +289,3 @@ $(document).ready(function () {
     }
 
 });
-

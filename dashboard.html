@@ -32,6 +32,12 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
+    <script src="scripts/progressbar.min.js"></script>
+    <script src="scripts/progressbar.js"></script>
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
 </head>
         <body>
             <!-- Popper.JS -->
@@ -46,7 +52,7 @@
                 <!-- Sidebar -->
                 <nav id="sidebar">
                     <div class="sidebar-header">
-                        <h3></h3>
+                        <h3>Navigation</h3>
                     </div>
 
                     <ul class="list-unstyled components">
@@ -80,47 +86,58 @@
                 </nav>
                 <div id="pagewrap">
                     <img src="pics/bblogotrans.png" id="logo">
-<!--                     <div id="gaugewrapper">
-                        <div id="gaugeid">Environmental Score</div>
-                        <div id="gaugescore">Score</div>
-                        <div id="gauge"></div>
-
-                    </div> -->
-                    <!-- <div id="chart_div" style="width: 600px; height: 600px;"></div> -->
-<!--                     <div id="columnchart_material" style="width: 940px; height: 540px;"></div>
-                    <div id="linechart_material" style="width: 940px; height: 540px;"></div>
-                    <div id="bottom"></div> -->
+                
 
                     <div class="container-fluid">
-                          <div class="row" style="text-align:center; justify-content: center; height: 140px; width: 100%;">
-                            <div class="col-3" style="background-color:#ff0000; justify-content:space-between; padding-left: 10px; padding-right: :10px;"></div>
-                            <div class="col-1" style="background-color:#ffffff;"></div>
-                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;padding-left: 10px; padding-right: :10px;"></div>
-                            <div class="col-1" style="background-color:#ffffff;"></div>
-                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;padding-left: 10px; padding-right: :10px;"></div>
+                          <div class="row" style="text-align:center; justify-content: center; height: 280px; width: 100%;">
+                            <div class="col-3" style="background-color:#ffffff; justify-content:space-between; box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.4);">
+                                
+                                <div id="pointslabel">Rewards Points:</div>
+                                
+                                <div id="progressbar"></div>
+                                <div id="mathlabel"></div>
+                            </div>
+                            <div style="margin-right: 10.25%;"></div>
+                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;"></div>
+                            <div style="margin-right: 10.25%;"></div>
+                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;"></div>
                           </div>
                             
 
                     </div>
                     <div class="container-fluid" style="padding-top:25px;">
                           <div class="row" style="text-align:center; justify-content: center; height: 280px; width: 100%;">
-                            <div class="col-3" style="background-color:#ff0000; justify-content:space-between; "></div>
-                            <div class="col-1" style="background-color:#ffffff;"></div>
-                            <div class="col-7" style="background-color:#ffffff; justify-content: space-between;">
+                            <div class="col-4" style="background-color:#ffffff; justify-content:space-between;">
+                                <!-- GAUGE -->
+                                <div id="gaugewrapper">
+                                    <div id="gaugeid">Environmental Score</div>
+                                    <div id="gaugescore">Score</div>
+                                    <div id="gauge"></div>
+<!--                                     <div id="chart_div" style="width: 600px; height: 600px;"></div>
+                                    <div id="bottom"></div> -->
+
+                                </div>
+                            </div>
+                            <div style="margin-right: 4%;"></div>
+                            <div class="col-7" style="background-color:#3e3e3d; justify-content: space-between;">
                                 <!-- LINE GRAPH -->
-                                <div id="linechart_material" style="padding:10px;"></div>
+                                <div id="linechart_material"></div>
                             </div>
                           </div>
                             
 
                     </div>
                     <div class="container-fluid" style="padding-top:25px;">
-                          <div class="row" style="text-align:center; justify-content: center; height: 140px; width: 100%;">
-                            <div class="col-3" style="background-color:#ff0000; justify-content:space-between; padding-left: 10px; padding-right: :10px;"></div>
-                            <div class="col-1" style="background-color:#ffffff;"></div>
-                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;padding-left: 10px; padding-right: :10px;"></div>
-                            <div class="col-1" style="background-color:#ffffff;"></div>
-                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;padding-left: 10px; padding-right: :10px;"></div>
+                          <div class="row" style="text-align:center; justify-content: center; height: 280px; width: 100%;">
+                            <div class="col-3" style="background-color:#ff0000; justify-content:space-between;"></div>
+                            <div style="margin-right: 2%;"></div>
+                            <div class="col-5" style="background-color:#ffffff; justify-content: space-between;">
+                                <div id="columnchart_material"></div>
+                            </div>
+                            <div style="margin-right: 2%;"></div>
+                            <div class="col-3" style="background-color:#ff0000; justify-content: space-between;">
+                                <!-- COLUMN CHART -->
+                            </div>
                           </div>
                             
 
