@@ -295,6 +295,7 @@ $(document).ready(function () {
             ]);
 
             var options = {
+              title: "Environmental Performance Breakdown",
               chart: {
                 title: 'Environment Score Breakdown',
                 subtitle: 'Shower Heat, Shower Length, and Light Impact',
@@ -396,6 +397,7 @@ $(document).ready(function () {
             ]);
 
             var options = {
+              title: "Environmental Performance Breakdown",
               chart: {
                 title: 'Environment Score Breakdown',
                 subtitle: 'Shower Heat, Shower Length, and Light Impact',
@@ -441,6 +443,7 @@ $(document).ready(function () {
               ]);
 
           var options = {
+
             chart: {
               title: 'Weekly Performance',
               subtitle: 'Shower, Lights, and Toilet Usage'
