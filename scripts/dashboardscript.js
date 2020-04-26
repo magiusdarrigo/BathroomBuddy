@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
    var config = {
-      apiKey: "AIzaSyBKUq4OsZ2Y6lI_MuL3_EynuM35LNZ98-g",
+      // apiKey: "AIzaSyBKUq4OsZ2Y6lI_MuL3_EynuM35LNZ98-g",
       authDomain: "sink-timer.firebaseapp.com",
       databaseURL: "https://sink-timer.firebaseio.com",
       storageBucket: "sink-timer.appspot.com",
