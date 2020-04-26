@@ -1,4 +1,5 @@
 ![](pics/bblogotrans.png)
+
 Bathroom Buddy is a simple yet powerful device that helps users decrease their environmental footprint by alerting and tracking users' water and light consumption. Users may monitor their activity on the Bathroom Buddy website where they may also redeem rewards for eco-friendly habits.
 
 ## Inspiration
