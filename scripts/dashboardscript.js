@@ -99,6 +99,19 @@ $(document).ready(function () {
         var reward = Math.round(score * 7);
         localStorage.setItem("Rewards", reward);
         rewards = reward
+
+
+        var user = localStorage.getItem("customer");
+        var device = localStorage.getItem("Device");
+        var ip = localStorage.getItem("IP");
+        var name = localStorage.getItem("FirstName");
+        var ref = database.ref("Users/"+user);
+        ref.set({
+          Device: device,
+          IP: ip,
+          Name: name,
+          Rewards: reward,
+        });
     }
 
 
@@ -154,9 +167,6 @@ $(document).ready(function () {
             range3.axisFill.zIndex = -1;
 
             var gradient = new am4core.LinearGradient();
-            // gradient.stops.push({color:am4core.color("red")})
-            // gradient.stops.push({color:am4core.color("yellow")})
-            // gradient.stops.push({color:am4core.color("green")})
 
             axis.renderer.line.stroke = gradient;
             axis.renderer.line.strokeWidth = 15;
@@ -211,9 +221,6 @@ $(document).ready(function () {
             range3.axisFill.zIndex = -1;
 
             var gradient = new am4core.LinearGradient();
-            // gradient.stops.push({color:am4core.color("red")})
-            // gradient.stops.push({color:am4core.color("yellow")})
-            // gradient.stops.push({color:am4core.color("green")})
 
             axis.renderer.line.stroke = gradient;
             axis.renderer.line.strokeWidth = 15;
@@ -269,7 +276,6 @@ $(document).ready(function () {
 
         if(rewards > 2500)
         {   
-            // bar.setValue(rewards);
             bar.animate(1.0); 
         }
         else 
@@ -370,10 +376,6 @@ $(document).ready(function () {
             {
               index++;
             }
-
-            // console.log(data.getValue(6,1));
-            // console.log(data.getValue(6,2));
-            // console.log(data.getValue(6,3));
 
 
             chart.draw(dumbieData, google.charts.Line.convertOptions(options));
