@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     // if customer exists, cache ffn and relocate to booker view
     function gotData(data) {
-        var dataVal = data.val()
+        var dataVal = data.val();
         console.log(dataVal);
         console.log(dataVal["IP"]);
         console.log(dataVal["Rewards"]);

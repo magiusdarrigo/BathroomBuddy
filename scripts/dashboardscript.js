@@ -8,8 +8,73 @@ $(document).ready(function () {
     };
 
     firebase.initializeApp(config);
-
     var database = firebase.database();
+
+    var light = [];
+    var showerH = [];
+    var showerL = [];
+
+    var rewards = localStorage.getItem("Rewards");
+    var ip = localStorage.getItem("IP");
+    var device = localStorage.getItem("Device");
+
+    getSensorVals();
+
+
+
+    function getSensorVals() {
+        var ref = database.ref("Universe/" + ip +"/"+device);
+        ref.once("value", gotData, errData);
+    }
+
+    function gotData(data) {
+        var dataVal = data.val();
+
+        for(var date in dataVal) {
+            var vals = dataVal[date];
+            var showerEvents = vals["ShowerEvents"];
+
+            var lightEvents = vals["LightEvents"];
+            var showerHeatIndexes = showerEvents["ShowerHeatIndexes"];
+            var showerLengths = showerEvents["ShowerLengths"];
+
+            for(var l in lightEvents){
+                light.push(lightEvents[l]);
+            }
+            for(var h in showerHeatIndexes){
+                showerH.push(showerHeatIndexes[h]);
+            }
+            for(var s in showerLengths){
+                showerL.push(showerLengths[s]);
+            }
+        }
+
+        console.log(light);
+        console.log(showerH);
+        console.log(showerL);
+        nextMove();
+        
+    }
+
+    function errData(data) {
+        console.log("Error!");
+    }
+
+     function average(data) {
+        var count = 0;
+        var sum = 0;
+        for(var i in data) {
+            sum += data[i];
+            count++;
+        }
+        return sum/count;
+
+    }
+
+
+
+
+
     var rewards = localStorage.getItem("Rewards");
     $("#pointslabel").html("Rewards Points: "+rewards);
 
@@ -22,119 +87,126 @@ $(document).ready(function () {
 
     google.charts.load('current', {'packages':['bar','line','gauge']});
 
-    am4core.ready(function() {
+    function nextMove(){
+        am4core.ready(function() {
 
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
 
-        // create chart
-        var chart = am4core.create("gauge", am4charts.GaugeChart);
-        chart.innerRadius = -15;
+            // create chart
+            var chart = am4core.create("gauge", am4charts.GaugeChart);
+            chart.innerRadius = -15;
 
-        var axis = chart.xAxes.push(new am4charts.ValueAxis());
-        axis.min = 0;
-        axis.max = 100;
-        axis.strictMinMax = true;
-        var colorSet = new am4core.ColorSet();
+            var axis = chart.xAxes.push(new am4charts.ValueAxis());
+            axis.min = 0;
+            axis.max = 100;
+            axis.strictMinMax = true;
+            var colorSet = new am4core.ColorSet();
 
-        var range1 = axis.axisRanges.create();
-        range1.value = 0;
-        range1.endValue = 25;
-        range1.axisFill.fillOpacity = 1;
-        range1.axisFill.fill = am4core.color("#bad9fc");
-        range1.axisFill.zIndex = -1;
-        var range2 = axis.axisRanges.create();
-        range2.value = 25;
-        range2.endValue = 80;
-        range2.axisFill.fillOpacity = 1;
-        range2.axisFill.fill = am4core.color("#92bce0");
-        range2.axisFill.zIndex = -1;
-        var range3 = axis.axisRanges.create();
-        range3.value = 80;
-        range3.endValue = 100;
-        range3.axisFill.fillOpacity = 1;
-        range3.axisFill.fill = am4core.color("#9adac3");
-        range3.axisFill.zIndex = -1;
+            var range1 = axis.axisRanges.create();
+            range1.value = 0;
+            range1.endValue = 25;
+            range1.axisFill.fillOpacity = 1;
+            range1.axisFill.fill = am4core.color("#bad9fc");
+            range1.axisFill.zIndex = -1;
+            var range2 = axis.axisRanges.create();
+            range2.value = 25;
+            range2.endValue = 80;
+            range2.axisFill.fillOpacity = 1;
+            range2.axisFill.fill = am4core.color("#92bce0");
+            range2.axisFill.zIndex = -1;
+            var range3 = axis.axisRanges.create();
+            range3.value = 80;
+            range3.endValue = 100;
+            range3.axisFill.fillOpacity = 1;
+            range3.axisFill.fill = am4core.color("#9adac3");
+            range3.axisFill.zIndex = -1;
 
-        var gradient = new am4core.LinearGradient();
-        // gradient.stops.push({color:am4core.color("red")})
-        // gradient.stops.push({color:am4core.color("yellow")})
-        // gradient.stops.push({color:am4core.color("green")})
+            var gradient = new am4core.LinearGradient();
+            // gradient.stops.push({color:am4core.color("red")})
+            // gradient.stops.push({color:am4core.color("yellow")})
+            // gradient.stops.push({color:am4core.color("green")})
 
-        axis.renderer.line.stroke = gradient;
-        axis.renderer.line.strokeWidth = 15;
-        axis.renderer.line.strokeOpacity = 1;
+            axis.renderer.line.stroke = gradient;
+            axis.renderer.line.strokeWidth = 15;
+            axis.renderer.line.strokeOpacity = 1;
 
-        axis.renderer.grid.template.disabled = true;
+            axis.renderer.grid.template.disabled = true;
 
-        var hand = chart.hands.push(new am4charts.ClockHand());
-        hand.radius = am4core.percent(97);
-        
+            var hand = chart.hands.push(new am4charts.ClockHand());
+            hand.radius = am4core.percent(97);
+            
 
-        setInterval(function() {
-            hand.showValue(100, 1000, am4core.ease.cubicOut);
-        }, 500);
-
-
-    }); 
-
-    am4core.ready(function() {
-
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
-
-        // create chart
-        var chart = am4core.create("gauge2", am4charts.GaugeChart);
-        chart.innerRadius = -15;
-
-        var axis = chart.xAxes.push(new am4charts.ValueAxis());
-        axis.min = 0;
-        axis.max = 15;
-        axis.strictMinMax = true;
-        var colorSet = new am4core.ColorSet();
-
-        var range1 = axis.axisRanges.create();
-        range1.value = 0;
-        range1.endValue = 5;
-        range1.axisFill.fillOpacity = 1;
-        range1.axisFill.fill = am4core.color("#92bce0");
-        range1.axisFill.zIndex = -1;
-        var range2 = axis.axisRanges.create();
-        range2.value = 5;
-        range2.endValue = 15;
-        range2.axisFill.fillOpacity = 1;
-        range2.axisFill.fill = am4core.color("#bad9fc");
-        range2.axisFill.zIndex = -1;
-        var range3 = axis.axisRanges.create();
-        range3.value = 20;
-        range3.endValue = 30;
-        range3.axisFill.fillOpacity = 1;
-        range3.axisFill.fill = am4core.color("#9adac3");
-        range3.axisFill.zIndex = -1;
-
-        var gradient = new am4core.LinearGradient();
-        // gradient.stops.push({color:am4core.color("red")})
-        // gradient.stops.push({color:am4core.color("yellow")})
-        // gradient.stops.push({color:am4core.color("green")})
-
-        axis.renderer.line.stroke = gradient;
-        axis.renderer.line.strokeWidth = 15;
-        axis.renderer.line.strokeOpacity = 1;
-
-        axis.renderer.grid.template.disabled = true;
-
-        var hand = chart.hands.push(new am4charts.ClockHand());
-        hand.radius = am4core.percent(97);
-        
-
-        setInterval(function() {
-            hand.showValue(15, 1000, am4core.ease.cubicOut);
-        }, 500);
+            setInterval(function() {
+                hand.showValue(100, 1000, am4core.ease.cubicOut);
+            }, 500);
 
 
-    }); 
+        }); 
+
+        am4core.ready(function() {
+
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+
+            // create chart
+            var chart = am4core.create("gauge2", am4charts.GaugeChart);
+            chart.innerRadius = -15;
+
+            var axis = chart.xAxes.push(new am4charts.ValueAxis());
+            axis.min = 0;
+            axis.max = 15;
+            axis.strictMinMax = true;
+            var colorSet = new am4core.ColorSet();
+
+            var range1 = axis.axisRanges.create();
+            range1.value = 0;
+            range1.endValue = 5;
+            range1.axisFill.fillOpacity = 1;
+            range1.axisFill.fill = am4core.color("#92bce0");
+            range1.axisFill.zIndex = -1;
+            var range2 = axis.axisRanges.create();
+            range2.value = 5;
+            range2.endValue = 15;
+            range2.axisFill.fillOpacity = 1;
+            range2.axisFill.fill = am4core.color("#bad9fc");
+            range2.axisFill.zIndex = -1;
+            var range3 = axis.axisRanges.create();
+            range3.value = 20;
+            range3.endValue = 30;
+            range3.axisFill.fillOpacity = 1;
+            range3.axisFill.fill = am4core.color("#9adac3");
+            range3.axisFill.zIndex = -1;
+
+            var gradient = new am4core.LinearGradient();
+            // gradient.stops.push({color:am4core.color("red")})
+            // gradient.stops.push({color:am4core.color("yellow")})
+            // gradient.stops.push({color:am4core.color("green")})
+
+            axis.renderer.line.stroke = gradient;
+            axis.renderer.line.strokeWidth = 15;
+            axis.renderer.line.strokeOpacity = 1;
+
+            axis.renderer.grid.template.disabled = true;
+
+            var hand = chart.hands.push(new am4charts.ClockHand());
+            hand.radius = am4core.percent(97);
+            
+            var avg = average(showerL)/60;
+
+
+            setInterval(function() {
+                hand.showValue(avg, 1000, am4core.ease.cubicOut);
+            }, 500);
+
+
+        }); 
+    }
+    
+
+
 
 
 
@@ -182,73 +254,6 @@ $(document).ready(function () {
         bar.animate(rewards/2500); 
     }
 
-    // var data = [
-    // {
-    //     type: "indicator",
-    //     mode: "gauge+number",
-    //     value: 45,
-    //     title: { text: "Environment Score", font: { size: 24 } },
-    //     // delta: { reference: 400, increasing: { color: "RebeccaPurple" } },
-    //     gauge: {
-    //       axis: { range: [null, 100], tickwidth: 1, tickcolor: "004A9D" },
-    //       bar: { color: "88BBE4" },
-    //       bgcolor: "white",
-    //       borderwidth: 2,
-    //       bordercolor: "gray",
-    //       steps: [
-    //         { range: [0, 15], color: "ff6961" },
-    //         { range: [15, 40], color: "FEFE69" },
-    //         { range: [40, 100], color: "A9F36A" }
-    //       ]
-    //     }
-    //   }
-    // ];
-
-    // var layout = {
-    //   width: 940,
-    //   height: 540,
-    //   // margin: { t: 25, r: 25, l: 25, b: 25 },
-    //   paper_bgcolor: "lavendar",
-    //   font: { color: "004A9D", family: "Arial" }
-    // };
-
-    // Plotly.newPlot('gauge', data, layout);
-
-
-    // google.charts.setOnLoadCallback(drawGauge);
-
-    // function drawGauge() {
-
-    //     var data = google.visualization.arrayToDataTable([
-    //       ['Label', 'Value'],
-    //       ['ES', 80]
-    //     ]);
-
-    //     var options = {
-    //       width: 800, height: 600,
-    //       redFrom: 90, redTo: 100,
-    //       yellowFrom:75, yellowTo: 90,
-    //       greenFrom:0, greenTo: 75
-    //     };
-
-    //     var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-    //     chart.draw(data, options);
-
-        // setInterval(function() {
-        //   data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-        //   chart.draw(data, options);
-        // }, 13000);
-        // setInterval(function() {
-        //   data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
-        //   chart.draw(data, options);
-        // }, 5000);
-        // setInterval(function() {
-        //   data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
-        //   chart.draw(data, options);
-        // }, 26000);
-    // }
-
 
     google.charts.setOnLoadCallback(drawBarChart);
 
@@ -273,6 +278,7 @@ $(document).ready(function () {
                 // Adds titles to each axis.
                 0: {title: 'Carbon Footprint'}
             },
+
             colors: ['#B3D9FF','#87DCC0', '#88BBE4']
         };
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -280,6 +286,7 @@ $(document).ready(function () {
     }
 
     google.charts.setOnLoadCallback(drawLineChart);
+
 
     function drawLineChart() {
 
@@ -314,8 +321,7 @@ $(document).ready(function () {
             // Adds titles to each axis.
             0: {title: 'Carbon Footprint'}
         },
-        // width: 900,
-        // height: 400,
+
         colors: ['#87DCC0','#B3D9FF', '#88BBE4']
       };
 
