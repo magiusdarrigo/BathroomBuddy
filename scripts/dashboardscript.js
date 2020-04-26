@@ -71,6 +71,36 @@ $(document).ready(function () {
 
     }
 
+    function calcScore(){
+        var avgH = average(showerH);
+        var avgS = average(showerL);
+        var avgL = average(light);
+        var score = 100 - 40 * (avgS/180 * 0.2) - 20 * (avgH/90 * 0.2) - 5 * (avgL/1000 * 0.2);
+        $("#gaugescore").html(Math.round(score));
+        calcBill(score);
+        calcRewards(score);
+        console.log(score);
+        return score;
+    }
+
+    function calcBill(score) {
+
+        var energyBill = 70/score * 112.67;
+        var waterBill = 70/score * 70.39;
+
+        $("#energy").html("$"+energyBill.toFixed(2));
+        $("#water").html("$"+waterBill.toFixed(2));
+        $("#energyd").html("+2.5%");
+        $("#waterd").html("+4.5%");
+
+    }
+
+    function calcRewards(score) {
+        var reward = Math.round(score * 7);
+        localStorage.setItem("Rewards", reward);
+        rewards = reward
+    }
+
 
 
 
@@ -85,7 +115,7 @@ $(document).ready(function () {
         $("#mathlabel").html((2500-rewards) +" more points until your next prize!");
     }
 
-    google.charts.load('current', {'packages':['bar','line','gauge']});
+    google.charts.load('current', {'packages':['bar','line','gauge', 'corechart']});
 
     function nextMove(){
         am4core.ready(function() {
@@ -137,10 +167,10 @@ $(document).ready(function () {
             var hand = chart.hands.push(new am4charts.ClockHand());
             hand.radius = am4core.percent(97);
             
-
+            var score = calcScore();
             setInterval(function() {
-                hand.showValue(100, 1000, am4core.ease.cubicOut);
-            }, 500);
+                hand.showValue(score, 2000, am4core.ease.cubicOut);
+            }, 1000);
 
 
         }); 
@@ -196,165 +226,163 @@ $(document).ready(function () {
             
             var avg = average(showerL)/60;
 
-
+            $("#gauge2score").html(avg.toPrecision(2) + " minutes");
             setInterval(function() {
-                hand.showValue(avg, 1000, am4core.ease.cubicOut);
-            }, 500);
+                hand.showValue(avg, 4000, am4core.ease.cubicOut);
+            }, 1000);
 
 
         }); 
+        var bar = new ProgressBar.Line(progressbar, {
+          strokeWidth: 1,
+          easing: 'easeInOut',
+          duration: 1400,
+          color: '#9adac3',
+          trailColor: '#eee',
+          trailWidth: 1,
+          svgStyle: {width: '100%', height: '100%'},
+          text: {
+            style: {
+              // Text color.
+              // Default: same as stroke color (options.color)
+              color: '#000000',
+              position: 'absolute',
+              right: '0',
+              top: '40px',
+              padding: '30px',
+              margin: 0,
+              transform: null
+            },
+            autoStyleContainer: false
+          },
+          from: {color: '#FFEA82'},
+          to: {color: '#ED6A5A'},
+          step: (state, bar) => {
+            if(rewards <= 2500) {   
+                bar.setText(Math.round(bar.value() * 2500) + '/2500');
+            }
+            else {
+                bar.setText(rewards + '/2500');
+            }
+          }
+        });
+
+        if(rewards > 2500)
+        {   
+            // bar.setValue(rewards);
+            bar.animate(1.0); 
+        }
+        else 
+        {
+            bar.animate(rewards/2500); 
+        }
+
+
+        google.charts.setOnLoadCallback(drawBarChart);
+
+        function drawBarChart() {
+            var avgH = average(showerH);
+            var avgS = average(showerL);
+            var avgL = average(light);
+            var data = google.visualization.arrayToDataTable([
+              ['Day', 'Score Impact', { role: 'style' }],
+              ['Shower Length', avgS, '#B3D9FF'],
+              ['Light', avgL/3, '#88BBE4'],
+              ['Shower Heat', avgH * 6, '#87DCC0'],
+            ]);
+
+            var options = {
+              chart: {
+                title: 'Environment Score Breakdown',
+                subtitle: 'Shower Heat, Shower Length, and Light Impact',
+                
+              },
+              legend: {position: 'none'},
+              vAxes: {
+                    // Adds titles to each axis.
+                    0: {title: 'Score Impact'}
+                },
+
+                // colors: ['#B3D9FF','#87DCC0', '#88BBE4']
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart_material'));
+            chart.draw(data, options);
+        }
+
+        google.charts.setOnLoadCallback(drawLineChart);
+
+
+        function drawLineChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Day', 'Shower Heat', 'Shower Length', 'Light'],
+              ['Mon', showerH[0]*6, showerL[0], light[0]/3], //0,012
+              ['Tues', showerH[1]*6, showerL[1], light[1]/3],
+              ['Wed', showerH[2]*6, showerL[2], light[2]/3],
+              ['Thurs', showerH[3]*6, showerL[3], light[3]/3],
+              ['Fri', showerH[4]*6, showerL[4], light[4]/3],
+              ['Sat', showerH[5]*6, showerL[5], light[5]/3],
+              ['Sun', showerH[6]*6, showerL[6], light[6]/3], //6,012
+            ]);
+
+            var dumbieData = google.visualization.arrayToDataTable([
+              ['Day', 'Shower Heat', 'Shower Length', 'Light'],
+              ['Mon', showerH[0]*6, showerL[0], light[0]/3],
+              ['Tues', 0, 0, 0],
+              ['Wed', 0, 0, 0],
+              ['Thurs', 0, 0, 0],
+              ['Fri', 0, 0, 0],
+              ['Sat', 0, 0, 0],
+              ['Sun', 0, 0, 0],
+              ]);
+
+          var options = {
+            chart: {
+              title: 'Weekly Performance',
+              subtitle: 'Shower, Lights, and Toilet Usage'
+            },
+            vAxes: {
+                // Adds titles to each axis.
+                0: {title: 'Environmental Footprint'}
+            },
+
+            colors: ['#87DCC0','#B3D9FF', '#88BBE4']
+          };
+
+          var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+         
+          var index = 1;
+          var s = setInterval(function(){
+            if(index==7) {
+                clearInterval(s);
+            }
+            if(index<7&&dumbieData.getValue(index,1) < data.getValue(index, 1)){
+              dumbieData.setValue(index,1, dumbieData.getValue(index,1)+(data.getValue(index,1)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,2) < data.getValue(index, 2)){
+              dumbieData.setValue(index,2, dumbieData.getValue(index,2)+(data.getValue(index,2)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,3) < data.getValue(index, 3)){
+              dumbieData.setValue(index,3, dumbieData.getValue(index,3)+(data.getValue(index,3)/6));
+            }
+            if(index<7&&dumbieData.getValue(index,1)>=data.getValue(index,1) && dumbieData.getValue(index,2)>=data.getValue(index,2) && dumbieData.getValue(index,3)>=data.getValue(index,3))
+            {
+              index++;
+            }
+
+            // console.log(data.getValue(6,1));
+            // console.log(data.getValue(6,2));
+            // console.log(data.getValue(6,3));
+
+
+            chart.draw(dumbieData, google.charts.Line.convertOptions(options));
+
+          }, 30);
+        }
     }
     
 
 
-
-
-
-    var bar = new ProgressBar.Line(progressbar, {
-      strokeWidth: 1,
-      easing: 'easeInOut',
-      duration: 1400,
-      color: '#9adac3',
-      trailColor: '#eee',
-      trailWidth: 1,
-      svgStyle: {width: '100%', height: '100%'},
-      text: {
-        style: {
-          // Text color.
-          // Default: same as stroke color (options.color)
-          color: '#000000',
-          position: 'absolute',
-          right: '0',
-          top: '40px',
-          padding: '30px',
-          margin: 0,
-          transform: null
-        },
-        autoStyleContainer: false
-      },
-      from: {color: '#FFEA82'},
-      to: {color: '#ED6A5A'},
-      step: (state, bar) => {
-        if(rewards <= 2500) {   
-            bar.setText(Math.round(bar.value() * 2500) + '/2500');
-        }
-        else {
-            bar.setText(rewards + '/2500');
-        }
-      }
-    });
-
-    if(rewards > 2500)
-    {   
-        // bar.setValue(rewards);
-        bar.animate(1.0); 
-    }
-    else 
-    {
-        bar.animate(rewards/2500); 
-    }
-
-
-    google.charts.setOnLoadCallback(drawBarChart);
-
-    function drawBarChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Mon', 1000, 400, 200],
-          ['Tues', 1170, 460, 250],
-          ['Wed', 660, 1120, 300],
-          ['Thurs', 1030, 540, 350],
-          ['Fri', 1030, 540, 350],
-          ['Sat', 1030, 540, 350],
-          ['Sun', 1030, 540, 350],
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Weekly Performance',
-            subtitle: 'Shower, Light, and Toilet Usage',
-          },
-          vAxes: {
-                // Adds titles to each axis.
-                0: {title: 'Carbon Footprint'}
-            },
-
-            colors: ['#B3D9FF','#87DCC0', '#88BBE4']
-        };
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-    }
-
-    google.charts.setOnLoadCallback(drawLineChart);
-
-
-    function drawLineChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Mon', 1000, 400, 200], //0,012
-          ['Tues', 1170, 460, 250],
-          ['Wed', 660, 1120, 300],
-          ['Thurs', 1030, 540, 350],
-          ['Fri', 1030, 540, 350],
-          ['Sat', 1030, 540, 350],
-          ['Sun', 1030, 540, 350], //6,012
-        ]);
-
-        var dumbieData = google.visualization.arrayToDataTable([
-          ['Day', 'Shower', 'Toilet', 'Light'],
-          ['Mon', 1000, 400, 200],
-          ['Tues', 0, 0, 0],
-          ['Wed', 0, 0, 0],
-          ['Thurs', 0, 0, 0],
-          ['Fri', 0, 0, 0],
-          ['Sat', 0, 0, 0],
-          ['Sun', 0, 0, 0],
-          ]);
-
-      var options = {
-        chart: {
-          title: 'Weekly Performance',
-          subtitle: 'Shower, Lights, and Toilet Usage'
-        },
-        vAxes: {
-            // Adds titles to each axis.
-            0: {title: 'Carbon Footprint'}
-        },
-
-        colors: ['#87DCC0','#B3D9FF', '#88BBE4']
-      };
-
-      var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-     
-      var index = 1;
-      setInterval(function(){
-       
-        if(dumbieData.getValue(index,1) < data.getValue(index, 1)){
-          dumbieData.setValue(index,1, dumbieData.getValue(index,1)+(data.getValue(index,1)/6));
-        }
-        if(dumbieData.getValue(index,2) < data.getValue(index, 2)){
-          dumbieData.setValue(index,2, dumbieData.getValue(index,2)+(data.getValue(index,2)/6));
-        }
-        if(dumbieData.getValue(index,3) < data.getValue(index, 3)){
-          dumbieData.setValue(index,3, dumbieData.getValue(index,3)+(data.getValue(index,3)/6));
-        }
-        if(dumbieData.getValue(index,1)>=data.getValue(index,1) && dumbieData.getValue(index,2)>=data.getValue(index,2) && dumbieData.getValue(index,3)>=data.getValue(index,3))
-        {
-          index++;
-        }
-        if(index>6) {
-
-        }
-        // console.log(data.getValue(6,1));
-        // console.log(data.getValue(6,2));
-        // console.log(data.getValue(6,3));
-
-
-        chart.draw(dumbieData, google.charts.Line.convertOptions(options));
-
-      }, 30);
-    }
 
 });

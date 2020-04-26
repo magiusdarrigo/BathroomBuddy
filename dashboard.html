@@ -103,16 +103,16 @@
                             <div class="col-3" style="background-color:#ffffff; justify-content:space-between; box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);">
                                 <div class="month">April</div>
                                 <div class="energylabel">This month's projected energy bill:</div>
-                                <div class="energybill">$130.69</div>
-                                <div class="energydiff">+2.5%</div>
+                                <div class="energybill" id="energy"></div>
+                                <div class="energydiff" id="energyd"></div>
 
                             </div>
                             <div style="margin-right: 2%;"></div>
                             <div class="col-3" style="background-color:#ffffff; justify-content:space-between; box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.2);">
                                 <div class="month">April</div>
                                 <div class="energylabel">This month's projected water bill:</div>
-                                <div class="energybill">$90.69</div>
-                                <div class="energydiff">+4.5%</div>
+                                <div class="energybill" id="water"></div>
+                                <div class="energydiff" id="waterd"></div>
                             </div>
                           </div>
                             
@@ -124,7 +124,7 @@
                                 <!-- GAUGE -->
                                 <div id="gaugewrapper">
                                     <div id="gaugeid">Environmental Score</div>
-                                    <div id="gaugescore">Score</div>
+                                    <div id="gaugescore"></div>
                                     <div id="gauge"></div>
 <!--                                     <div id="chart_div" style="width: 600px; height: 600px;"></div>
                                     <div id="bottom"></div> -->
@@ -142,7 +142,14 @@
                     </div>
                     <div class="container-fluid" style="padding-top:25px;">
                           <div class="row" style="text-align:center; justify-content: center; height: 280px; width: 100%;">
-                            <div class="col-3" style="background-color:#ff0000; justify-content:space-between;"></div>
+                            
+                            <div class="col-3" style="background-color:#ffffff; justify-content:space-between; box-shadow: 1px 4px 7px 2px rgba(0,0,0,0.1);">
+                                <div class="month">Did You Know?</div>
+                                <div class="energylabel" style="color:#636363">If you use a low-flow showerhead, you can save 15 gallons of water during a 10-minute shower.</div>
+                                <img src="pics/lightbulb-icon.png" style="height:70px; width: 70px; margin-top: 10px; opacity: 0.7">
+
+                            </div>
+                            
                             <div style="margin-right: 2%;"></div>
                             <div class="col-5" style="background-color:#ffffff; justify-content: space-between;">
                                 <div id="columnchart_material"></div>
@@ -152,7 +159,7 @@
                                 <!-- COLUMN CHART -->
                                 <div id="gauge2wrapper">
                                     <div id="gauge2id">Average Shower Time</div>
-                                    <div id="gauge2score">Time</div>
+                                    <div id="gauge2score"></div>
                                     <div id="gauge2"></div>
 <!--                                     <div id="chart_div" style="width: 600px; height: 600px;"></div>
                                     <div id="bottom"></div> -->
