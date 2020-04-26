@@ -3,6 +3,7 @@ body
 	margin: 0;
 	height: 100%;
 	background: #FFFFFF;
+	font-family: Montserrat;
 }
 #spacing {
 	padding-top: 1em;
@@ -54,7 +55,7 @@ body
 	font-size: 45;
 
 
-	font-family: "Montserrat";
+	/*font-family: "Montserrat";*/
 	font-size: 60px;
 	padding-bottom: 2%;
 }
@@ -70,7 +71,7 @@ body
     display:block;
 
 
-    font-family: "Montserrat";
+    /*font-family: "Montserrat";*/
 	font-weight: bold;
 	color: #48586b;
 
@@ -94,7 +95,7 @@ body
 	text-align: center;
 	border-radius: 30px;
 	outline: none;
-	font-family: "Montserrat";
+	/*font-family: "Montserrat";*/
 	/*/hc/*/
 	width: 350px;
 	height: 40px;
@@ -110,7 +111,7 @@ body
 	display:block;
 	 
 	 
-	font-family: "Montserrat";
+	/*font-family: "Montserrat";*/
 
 	color: #FFFFFF;
 	background: #38b7ff;
@@ -132,5 +133,5 @@ body
 
 	/*opacity: 0.8;
 	opacity: 0.4;*/
-	opacity: 0.90;
+	opacity: 0.5;
 }

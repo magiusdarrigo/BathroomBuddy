@@ -3,6 +3,7 @@ body
 	margin: 0;
 	height: 100%;
 	background-color: #e8e8e8;
+	font-family: Montserrat;
 }
 
 #pagewrap{
@@ -60,7 +61,7 @@ body
 
 	font-weight: bolder;
 	color: #38b7ff;
-	font-family: 'Montserrat';
+
 	font-size: 40px;
 
 	padding-bottom: 2%;
@@ -76,7 +77,7 @@ body
     display:block;
 
 
-	font-family: 'Montserrat';
+
 	font-weight: bold;
 	color: #48586b;
 
