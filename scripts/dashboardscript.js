@@ -100,7 +100,6 @@ $(document).ready(function () {
         localStorage.setItem("Rewards", reward);
         rewards = reward
 
-
         var user = localStorage.getItem("customer");
         var device = localStorage.getItem("Device");
         var ip = localStorage.getItem("IP");
